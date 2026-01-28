@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 /**
  * CTASection Component
@@ -23,22 +24,18 @@ const CTASection = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a 
-            href="/contact" 
-            className="inline-flex items-center justify-center gap-2 bg-white text-indigo-600 px-8 py-4 rounded-md font-semibold text-lg hover:bg-opacity-95 shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-          >
-            Get Started Today
-            <ArrowRight className="w-5 h-5" />
-          </a>
+          <Button asChild size="lg" variant="default" className="bg-white text-indigo-600 hover:bg-white/95 shadow-lg hover:shadow-xl w-full sm:w-auto">
+            <a href="/contact">
+              Get Started Today
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </Button>
           
-          <a 
-            href="https://wa.me/917299002152" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 border-2 border-white/40 bg-white/10 text-white px-8 py-4 rounded-md font-semibold text-lg hover:bg-white/20 transition-all duration-300 w-full sm:w-auto backdrop-blur-sm"
-          >
-            Chat on WhatsApp
-          </a>
+          <Button asChild size="lg" variant="outline" className="border-2 border-white/40 bg-white/10 text-white hover:bg-white/20 hover:text-white w-full sm:w-auto backdrop-blur-sm">
+            <a href="https://wa.me/917299002152" target="_blank" rel="noopener noreferrer">
+              Chat on WhatsApp
+            </a>
+          </Button>
         </div>
       </div>
 

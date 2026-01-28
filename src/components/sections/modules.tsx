@@ -11,6 +11,7 @@ import {
   Award,
   ArrowRight
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const modules = [
   {
@@ -101,12 +102,12 @@ const IntegratedModules = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link href="/modules">
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-10 rounded-md px-8 bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg active:scale-95">
+          <Button asChild variant="default" className="shadow-lg">
+            <Link href="/modules">
               Explore All Modules
               <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

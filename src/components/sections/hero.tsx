@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   return (
@@ -30,17 +31,17 @@ const HeroSection = () => {
 
           {/* Call to Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact">
-              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-600 h-[64px] rounded-[0.5rem] bg-[#4f46e5] hover:bg-[#4338ca] text-white px-8 py-6 text-[18px] shadow-lg hover:shadow-xl transition-all duration-300">
+            <Button asChild size="lg" variant="default" className="h-[64px] px-8 text-[18px] shadow-lg hover:shadow-xl">
+              <a href="/contact">
                 Request a Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-            </a>
-            <a href="/features">
-              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-semibold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-600 shadow-sm h-[64px] rounded-[0.5rem] border-2 border-[#4f46e5] text-[#4f46e5] hover:bg-[#eef2ff] px-8 py-6 text-[18px] transition-all duration-300">
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="h-[64px] px-8 text-[18px]">
+              <a href="/features">
                 Explore Features
-              </button>
-            </a>
+              </a>
+            </Button>
           </div>
         </div>
 

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Send, Calendar } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const ContactForms = () => {
   return (
@@ -93,13 +94,10 @@ const ContactForms = () => {
                     required
                   ></textarea>
                 </div>
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#4f46e5] disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-[#4f46e5] hover:bg-[#4338ca] text-white shadow-md hover:shadow-lg"
-                >
+                <Button type="submit" variant="default" className="w-full shadow-md hover:shadow-lg">
                   Send Message
                   <Send className="ml-2 h-4 w-4" />
-                </button>
+                </Button>
               </form>
             </div>
           </div>
@@ -204,13 +202,10 @@ const ContactForms = () => {
                     className="flex min-h-[85px] w-full rounded-md border border-[#e5e7eb] bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-[#9ca3af] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#9333ea] disabled:cursor-not-allowed disabled:opacity-50 mt-1"
                   ></textarea>
                 </div>
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#9333ea] disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-[#9333ea] hover:bg-[#7e22ce] text-white shadow-md hover:shadow-lg"
-                >
+                <Button type="submit" variant="default" className="w-full bg-[#9333ea] hover:bg-[#7e22ce] shadow-md hover:shadow-lg">
                   Request Demo
                   <Calendar className="ml-2 h-4 w-4" />
-                </button>
+                </Button>
               </form>
             </div>
           </div>

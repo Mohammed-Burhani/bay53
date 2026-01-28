@@ -7,6 +7,7 @@ import {
   BarChart3, 
   Shield 
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const featureData = [
   {
@@ -76,12 +77,12 @@ const FeaturesSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <a href="/features">
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-10 rounded-md px-8 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50">
+          <Button asChild variant="outline">
+            <a href="/features">
               View All Features
               <ArrowRight className="ml-2 h-5 w-5" />
-            </button>
-          </a>
+            </a>
+          </Button>
         </div>
       </div>
     </section>

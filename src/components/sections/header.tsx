@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,27 +45,26 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
-              <a key={link.name} href={link.href}>
-                <button
-                  className={`inline-flex items-center justify-center rounded-md text-sm transition-colors duration-200 h-9 px-4 py-2 ${
-                    isActive(link.href)
-                      ? "text-indigo-600 bg-indigo-50 font-semibold"
-                      : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 font-medium"
-                  }`}
-                >
-                  {link.name}
-                </button>
-              </a>
+              <Button
+                key={link.name}
+                asChild
+                variant="ghost"
+                className={
+                  isActive(link.href)
+                    ? "text-indigo-600 bg-indigo-50 font-semibold"
+                    : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 font-medium"
+                }
+              >
+                <a href={link.href}>{link.name}</a>
+              </Button>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <a href="/contact">
-              <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-300 h-9 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white shadow-md hover:shadow-lg">
-                Get Started
-              </button>
-            </a>
+            <Button asChild variant="default" className="shadow-md hover:shadow-lg">
+              <a href="/contact">Get Started</a>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,11 +99,9 @@ export default function Header() {
             </a>
           ))}
           <div className="pt-2 border-t border-gray-100">
-            <a href="/contact" className="block w-full">
-              <button className="w-full text-center py-2 bg-indigo-600 text-white rounded-md text-sm font-medium">
-                Get Started
-              </button>
-            </a>
+            <Button asChild variant="default" className="w-full">
+              <a href="/contact">Get Started</a>
+            </Button>
           </div>
         </div>
       )}

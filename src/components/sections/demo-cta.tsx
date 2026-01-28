@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 /**
  * DemoCTA Component
@@ -29,13 +30,12 @@ const DemoCTA: React.FC = () => {
 
         {/* Request a Demo Button */}
         <div className="flex justify-center">
-          <a 
-            href="/contact" 
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 h-[60px] px-8 bg-white text-[#4f46e5] hover:bg-gray-100 text-[18px] shadow-lg hover:shadow-xl active:scale-95"
-          >
-            Request a Demo
-            <ArrowRight className="ml-2 h-5 w-5 shrink-0" strokeWidth={2} />
-          </a>
+          <Button asChild size="lg" variant="default" className="h-[60px] px-8 bg-white text-[#4f46e5] hover:bg-gray-100 hover:text-[#4f46e5] text-[18px] shadow-lg hover:shadow-xl">
+            <a href="/contact">
+              Request a Demo
+              <ArrowRight className="ml-2 h-5 w-5 shrink-0" strokeWidth={2} />
+            </a>
+          </Button>
         </div>
       </div>
     </section>

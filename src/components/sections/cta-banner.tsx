@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const CtaBanner = () => {
   return (
@@ -31,21 +32,12 @@ const CtaBanner = () => {
         </p>
 
         {/* Action Button */}
-        <a
-          href="/contact"
-          className="inline-flex items-center justify-center gap-2 whitespace-nowrap bg-white text-[#4f46e5] font-semibold transition-all duration-300 hover:bg-gray-100 hover:scale-105"
-          style={{
-            height: '48px',
-            paddingLeft: '32px',
-            paddingRight: '32px',
-            borderRadius: '9999px',
-            fontSize: '16px',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-          }}
-        >
-          Discuss Your Requirements
-          <ArrowRight className="w-5 h-5" />
-        </a>
+        <Button asChild variant="default" className="h-12 px-8 rounded-full bg-white text-[#4f46e5] hover:bg-gray-100 hover:text-[#4f46e5] shadow-md hover:scale-105">
+          <a href="/contact">
+            Discuss Your Requirements
+            <ArrowRight className="w-5 h-5" />
+          </a>
+        </Button>
       </div>
     </section>
   );

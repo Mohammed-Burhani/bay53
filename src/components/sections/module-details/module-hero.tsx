@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@/components/ui/button';
 
 interface ModuleHeroProps {
   title: string;
@@ -19,9 +20,9 @@ const ModuleHero = ({ title, description, image }: ModuleHeroProps) => {
               {description}
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200">
+              <Button size="lg" variant="default" className="px-8 py-4 shadow-lg shadow-indigo-200">
                 Get Started
-              </button>
+              </Button>
             </div>
           </div>
           <div className="lg:w-1/2 relative">

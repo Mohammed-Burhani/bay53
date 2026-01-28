@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@/components/ui/button';
 
 interface ModuleCTAProps {
   moduleName: string;
@@ -15,9 +16,9 @@ const ModuleCTA = ({ moduleName }: ModuleCTAProps) => {
               Start your journey with Bay53 ERP today.
             </h2>
             <div className="flex justify-center mt-10">
-              <button className="bg-white text-indigo-600 px-10 py-5 rounded-xl font-bold text-lg hover:bg-indigo-50 transition-all shadow-xl shadow-black/10">
+              <Button size="lg" variant="default" className="bg-white text-indigo-600 hover:bg-indigo-50 hover:text-indigo-600 px-10 py-5 text-lg shadow-xl shadow-black/10">
                 Request a Personalised Demo
-              </button>
+              </Button>
             </div>
           </div>
           
