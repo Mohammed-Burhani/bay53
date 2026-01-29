@@ -1,37 +1,9 @@
 import React from 'react';
-import { 
-  AlertCircle, 
-  FileText, 
-  BarChart3, 
-  ShieldCheck, 
-  Zap, 
-  LineChart, 
-  Database, 
-  Lock,
-  Banknote,
-  Settings,
-  Package,
-  TrendingUp,
-  Users
-} from 'lucide-react';
-
-const iconMap: Record<string, any> = {
-  FileText,
-  AlertCircle,
-  ShieldCheck,
-  Zap,
-  LineChart,
-  Lock,
-  BarChart3,
-  Banknote,
-  Settings,
-  Package,
-  TrendingUp,
-  Users
-};
+import { urlFor } from '@/lib/sanity';
+import Image from 'next/image';
 
 interface ChallengeItem {
-  icon: string;
+  icon?: any; // Sanity image object
   title: string;
   description: string;
 }
@@ -42,13 +14,24 @@ interface ModuleChallengesProps {
 }
 
 const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
-  const renderIcon = (iconName: string, colorClass: string) => {
-    const Icon = iconMap[iconName] || AlertCircle;
-    return <Icon className={`w-6 h-6 ${colorClass}`} />;
+  const renderIcon = (icon: any, bgColorClass: string) => {
+    if (!icon) return null;
+    
+    const iconUrl = urlFor(icon).width(48).height(48).url();
+    
+    return (
+      <div className={`shrink-0 w-12 h-12 rounded-xl ${bgColorClass} flex items-center justify-center p-2`}>
+        <Image
+          src={iconUrl}
+          alt="Icon"
+          width={32}
+          height={32}
+          className="w-8 h-8 object-contain"
+        />
+      </div>
+    );
   };
 
-  const challengeColors = ["text-red-500", "text-orange-500", "text-amber-500"];
-  const solutionColors = ["text-green-500", "text-blue-500", "text-indigo-500"];
   const challengeBgColors = ["bg-red-50", "bg-orange-50", "bg-amber-50"];
   const solutionBgColors = ["bg-green-50", "bg-blue-50", "bg-indigo-50"];
 
@@ -68,9 +51,7 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
               <div className="space-y-6">
                 {challenges.map((item, index) => (
                   <div key={index} className="flex gap-5 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
-                    <div className={`shrink-0 w-12 h-12 rounded-xl ${challengeBgColors[index % challengeBgColors.length]} flex items-center justify-center`}>
-                      {renderIcon(item.icon, challengeColors[index % challengeColors.length])}
-                    </div>
+                    {renderIcon(item.icon, challengeBgColors[index % challengeBgColors.length])}
                     <div>
                       <h5 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h5>
                       <p className="text-gray-600 leading-relaxed">{item.description}</p>
@@ -86,9 +67,7 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
               <div className="space-y-6">
                 {solutions.map((item, index) => (
                   <div key={index} className="flex gap-5 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
-                    <div className={`shrink-0 w-12 h-12 rounded-xl ${solutionBgColors[index % solutionBgColors.length]} flex items-center justify-center`}>
-                      {renderIcon(item.icon, solutionColors[index % solutionColors.length])}
-                    </div>
+                    {renderIcon(item.icon, solutionBgColors[index % solutionBgColors.length])}
                     <div>
                       <h5 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h5>
                       <p className="text-gray-600 leading-relaxed">{item.description}</p>

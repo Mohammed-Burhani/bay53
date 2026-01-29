@@ -5,16 +5,30 @@ import ModuleFeatures from "@/components/sections/module-details/module-features
 import ModuleWorkflow from "@/components/sections/module-details/module-workflow";
 import ModuleCTA from "@/components/sections/module-details/module-cta";
 import Footer from "@/components/sections/footer";
-import { modulesData } from "@/lib/modules-data";
+import { getModuleBySlug, getAllModules } from "@/lib/sanity-queries";
+import { urlFor } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 
-export default async function ModuleDetailsPage({ params }: { params: { slug: string } }) {
+export async function generateStaticParams() {
+  const modules = await getAllModules();
+  return modules.map((module: any) => ({
+    slug: module.slug,
+  }));
+}
+
+export default async function ModuleDetailsPage({ 
+  params 
+}: { 
+  params: Promise<{ slug: string }> 
+}) {
   const { slug } = await params;
-  const data = modulesData[slug as keyof typeof modulesData];
+  const data = await getModuleBySlug(slug);
 
   if (!data) {
     notFound();
   }
+
+  const heroImageUrl = data.heroImage ? urlFor(data.heroImage).url() : '';
 
   return (
     <div className="min-h-screen">
@@ -23,7 +37,7 @@ export default async function ModuleDetailsPage({ params }: { params: { slug: st
         <ModuleHero 
           title={data.heroTitle} 
           description={data.heroDescription} 
-          image={data.heroImage} 
+          image={heroImageUrl} 
         />
         <ModuleChallenges 
           challenges={data.challenges} 

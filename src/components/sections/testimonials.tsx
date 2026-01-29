@@ -1,38 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { Star } from 'lucide-react';
+import { getFeaturedTestimonials } from '@/lib/sanity-queries';
+import { urlFor } from '@/lib/sanity';
 
-const testimonials = [
-  {
-    id: 1,
-    quote: "Bay53 has transformed our business operations completely. The integrated modules and real-time reporting have given us unprecedented visibility into our operations. Highly recommended for SMEs!",
-    author: "Rajesh Kumar",
-    role: "Managing Director",
-    company: "Alpha Manufacturing Ltd.",
-    avatar: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/f807af7c-0729-4437-95d4-4c3ff0c66b94-bay53-vercel-app/assets/images/images_1.png",
-    rating: 5
-  },
-  {
-    id: 2,
-    quote: "The financial management capabilities of Bay53 are exceptional. From multi-currency support to automated reconciliation, everything works seamlessly. The support team is always there when we need them.",
-    author: "Priya Sharma",
-    role: "CFO",
-    company: "TechVision Solutions Pvt. Ltd.",
-    avatar: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/f807af7c-0729-4437-95d4-4c3ff0c66b94-bay53-vercel-app/assets/images/images_2.png",
-    rating: 5
-  },
-  {
-    id: 3,
-    quote: "We were looking for an affordable yet powerful ERP solution for our growing business. Bay53 exceeded our expectations with its comprehensive features and ease of use. Best investment we made!",
-    author: "Mohammed Ali",
-    role: "Operations Manager",
-    company: "Global Traders Inc.",
-    avatar: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/f807af7c-0729-4437-95d4-4c3ff0c66b94-bay53-vercel-app/assets/images/images_3.png",
-    rating: 5
-  }
-];
-
-const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => {
+const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
   return (
     <div className="flex flex-col h-full bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
       <div className="flex gap-1 mb-6">
@@ -43,22 +15,24 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
       
       <blockquote className="flex-grow">
         <p className="text-[#4b5563] text-lg leading-relaxed italic mb-8">
-          "{testimonial.quote}"
+          "{testimonial.content}"
         </p>
       </blockquote>
       
       <div className="flex items-center gap-4 border-t border-gray-100 pt-6">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-gray-100">
-          <Image
-            src={testimonial.avatar}
-            alt={testimonial.author}
-            fill
-            className="object-cover"
-          />
-        </div>
+        {testimonial.image && (
+          <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-gray-100">
+            <Image
+              src={urlFor(testimonial.image).width(100).height(100).url()}
+              alt={testimonial.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
         <div>
           <h4 className="font-semibold text-[#111827] text-base leading-tight">
-            {testimonial.author}
+            {testimonial.name}
           </h4>
           <p className="text-[#6b7280] text-sm font-medium mt-1">
             {testimonial.role}
@@ -75,7 +49,9 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
   );
 };
 
-export default function Testimonials() {
+export default async function Testimonials() {
+  const testimonials = await getFeaturedTestimonials();
+
   return (
     <section className="py-24 px-4 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -89,8 +65,8 @@ export default function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+          {testimonials.map((testimonial: any) => (
+            <TestimonialCard key={testimonial._id} testimonial={testimonial} />
           ))}
         </div>
         

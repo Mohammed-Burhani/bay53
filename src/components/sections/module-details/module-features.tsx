@@ -1,43 +1,9 @@
 import React from 'react';
-import { 
-  AlertCircle, 
-  FileText, 
-  BarChart3, 
-  ShieldCheck, 
-  Zap, 
-  LineChart, 
-  Database, 
-  Lock,
-  Banknote,
-  Settings,
-  Package,
-  TrendingUp,
-  Users,
-  BookOpen,
-  Landmark,
-  Globe
-} from 'lucide-react';
-
-const iconMap: Record<string, any> = {
-  FileText,
-  AlertCircle,
-  ShieldCheck,
-  Zap,
-  LineChart,
-  Lock,
-  BarChart3,
-  Banknote,
-  Settings,
-  Package,
-  TrendingUp,
-  Users,
-  BookOpen,
-  Landmark,
-  Globe
-};
+import { urlFor } from '@/lib/sanity';
+import Image from 'next/image';
 
 interface FeatureItem {
-  icon: string;
+  icon?: any; // Sanity image object
   title: string;
   description: string;
 }
@@ -47,9 +13,20 @@ interface ModuleFeaturesProps {
 }
 
 const ModuleFeatures = ({ features }: ModuleFeaturesProps) => {
-  const renderIcon = (iconName: string) => {
-    const Icon = iconMap[iconName] || BarChart3;
-    return <Icon className="w-8 h-8 text-indigo-600 group-hover:text-white transition-colors" />;
+  const renderIcon = (icon: any) => {
+    if (!icon) return null;
+    
+    const iconUrl = urlFor(icon).width(64).height(64).url();
+    
+    return (
+      <Image
+        src={iconUrl}
+        alt="Feature icon"
+        width={32}
+        height={32}
+        className="w-8 h-8 object-contain"
+      />
+    );
   };
 
   return (
@@ -65,7 +42,7 @@ const ModuleFeatures = ({ features }: ModuleFeaturesProps) => {
             {features.map((feature, index) => (
               <div key={index} className="p-8 rounded-2xl bg-white border border-gray-100 hover:border-indigo-200 hover:shadow-lg transition-all group text-center">
                 <div className="mb-6 flex justify-center">
-                  <div className="p-4 rounded-2xl bg-indigo-50 group-hover:bg-indigo-600 transition-colors">
+                  <div className="p-4 rounded-2xl bg-indigo-50 group-hover:bg-indigo-600 transition-colors flex items-center justify-center">
                     {renderIcon(feature.icon)}
                   </div>
                 </div>
