@@ -20,6 +20,9 @@ const ModuleWorkflow = ({ moduleName, workflow }: ModuleWorkflowProps) => {
     <ClipboardCheck className="w-8 h-8" />
   ];
 
+  // Handle null or undefined array
+  const validWorkflow = workflow || [];
+
   return (
     <section className="py-20 px-4 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -30,7 +33,7 @@ const ModuleWorkflow = ({ moduleName, workflow }: ModuleWorkflowProps) => {
 
         <div className="relative bg-gradient-to-r from-blue-50 to-indigo-50 rounded-[3rem] p-12 lg:p-20 border border-indigo-100/50">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
-            {workflow.map((step, index) => (
+            {validWorkflow.map((step, index) => (
               <div key={index} className="relative group">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-20 h-20 rounded-full bg-white shadow-xl shadow-indigo-100 flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
@@ -43,7 +46,7 @@ const ModuleWorkflow = ({ moduleName, workflow }: ModuleWorkflowProps) => {
                 </div>
                 
                 {/* Arrow for desktop */}
-                {index < workflow.length - 1 && (
+                {index < validWorkflow.length - 1 && (
                   <div className="hidden lg:block absolute top-10 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-indigo-200">
                     <div className="absolute right-0 -top-1.5 border-t-2 border-r-2 border-indigo-200 w-3 h-3 rotate-45"></div>
                   </div>

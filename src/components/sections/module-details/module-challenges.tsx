@@ -35,6 +35,10 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
   const challengeBgColors = ["bg-red-50", "bg-orange-50", "bg-amber-50"];
   const solutionBgColors = ["bg-green-50", "bg-blue-50", "bg-indigo-50"];
 
+  // Handle null or undefined arrays
+  const validChallenges = challenges || [];
+  const validSolutions = solutions || [];
+
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -49,7 +53,7 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
             <div className="space-y-8">
               <h4 className="text-2xl font-bold text-gray-800 pb-4 border-b border-gray-200">Business Challenges</h4>
               <div className="space-y-6">
-                {challenges.map((item, index) => (
+                {validChallenges.map((item, index) => (
                   <div key={index} className="flex gap-5 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
                     {renderIcon(item.icon, challengeBgColors[index % challengeBgColors.length])}
                     <div>
@@ -65,7 +69,7 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
             <div className="space-y-8">
               <h4 className="text-2xl font-bold text-gray-800 pb-4 border-b border-gray-200">How Bay53 Solves Them</h4>
               <div className="space-y-6">
-                {solutions.map((item, index) => (
+                {validSolutions.map((item, index) => (
                   <div key={index} className="flex gap-5 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
                     {renderIcon(item.icon, solutionBgColors[index % solutionBgColors.length])}
                     <div>

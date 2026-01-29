@@ -2,37 +2,47 @@ import { client } from './sanity'
 
 // Module queries
 export async function getAllModules() {
-  return client.fetch(`
-    *[_type == "module"] | order(order asc) {
-      _id,
-      title,
-      "slug": slug.current,
-      heroTitle,
-      heroDescription,
-      heroImage,
-      order
-    }
-  `)
+  try {
+    return await client.fetch(`
+      *[_type == "module"] | order(order asc) {
+        _id,
+        title,
+        "slug": slug.current,
+        heroTitle,
+        heroDescription,
+        heroImage,
+        order
+      }
+    `)
+  } catch (error) {
+    console.error('Error fetching modules:', error);
+    return [];
+  }
 }
 
 export async function getModuleBySlug(slug: string) {
-  return client.fetch(
-    `
-    *[_type == "module" && slug.current == $slug][0] {
-      _id,
-      title,
-      "slug": slug.current,
-      heroTitle,
-      heroDescription,
-      heroImage,
-      challenges,
-      solutions,
-      features,
-      workflow
-    }
-  `,
-    { slug }
-  )
+  try {
+    return await client.fetch(
+      `
+      *[_type == "module" && slug.current == $slug][0] {
+        _id,
+        title,
+        "slug": slug.current,
+        heroTitle,
+        heroDescription,
+        heroImage,
+        challenges,
+        solutions,
+        features,
+        workflow
+      }
+    `,
+      { slug }
+    )
+  } catch (error) {
+    console.error('Error fetching module by slug:', error);
+    return null;
+  }
 }
 
 // Testimonial queries
@@ -68,40 +78,50 @@ export async function getFeaturedTestimonials() {
 
 // Blog queries
 export async function getAllBlogs() {
-  return client.fetch(`
-    *[_type == "blog"] | order(publishedAt desc) {
-      _id,
-      title,
-      "slug": slug.current,
-      author,
-      publishedAt,
-      excerpt,
-      mainImage,
-      categories,
-      tags,
-      featured
-    }
-  `)
+  try {
+    return await client.fetch(`
+      *[_type == "blog"] | order(publishedAt desc) {
+        _id,
+        title,
+        "slug": slug.current,
+        author,
+        publishedAt,
+        excerpt,
+        mainImage,
+        categories,
+        tags,
+        featured
+      }
+    `)
+  } catch (error) {
+    console.error('Error fetching blogs:', error);
+    return [];
+  }
 }
 
 export async function getBlogBySlug(slug: string) {
-  return client.fetch(
-    `
-    *[_type == "blog" && slug.current == $slug][0] {
-      _id,
-      title,
-      "slug": slug.current,
-      author,
-      publishedAt,
-      excerpt,
-      mainImage,
-      body,
-      categories,
-      tags
-    }
-  `,
-    { slug }
-  )
+  try {
+    return await client.fetch(
+      `
+      *[_type == "blog" && slug.current == $slug][0] {
+        _id,
+        title,
+        "slug": slug.current,
+        author,
+        publishedAt,
+        excerpt,
+        mainImage,
+        body,
+        categories,
+        tags
+      }
+    `,
+      { slug }
+    )
+  } catch (error) {
+    console.error('Error fetching blog by slug:', error);
+    return null;
+  }
 }
 
 export async function getFeaturedBlogs() {

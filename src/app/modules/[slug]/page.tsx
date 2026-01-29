@@ -11,6 +11,11 @@ import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
   const modules = await getAllModules();
+  
+  if (!modules || !Array.isArray(modules)) {
+    return [];
+  }
+  
   return modules.map((module: any) => ({
     slug: module.slug,
   }));

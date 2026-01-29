@@ -29,6 +29,9 @@ const ModuleFeatures = ({ features }: ModuleFeaturesProps) => {
     );
   };
 
+  // Handle null or undefined array
+  const validFeatures = features || [];
+
   return (
     <section className="py-20 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -39,7 +42,7 @@ const ModuleFeatures = ({ features }: ModuleFeaturesProps) => {
 
         <div className="bg-white rounded-[2.5rem] p-10 lg:p-16 shadow-xl shadow-indigo-100/50 border border-gray-100">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+            {validFeatures.map((feature, index) => (
               <div key={index} className="p-8 rounded-2xl bg-white border border-gray-100 hover:border-indigo-200 hover:shadow-lg transition-all group text-center">
                 <div className="mb-6 flex justify-center">
                   <div className="p-4 rounded-2xl bg-indigo-50 group-hover:bg-indigo-600 transition-colors flex items-center justify-center">

@@ -24,45 +24,51 @@ export default async function BlogPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogs.map((blog: any) => (
-                <Link
-                  key={blog._id}
-                  href={`/blog/${blog.slug}`}
-                  className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
-                >
-                  {blog.mainImage && (
-                    <div className="h-48 overflow-hidden">
-                      <img
-                        src={urlFor(blog.mainImage).width(600).height(400).url()}
-                        alt={blog.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
+              {blogs && blogs.length > 0 ? (
+                blogs.map((blog: any) => (
+                  <Link
+                    key={blog._id}
+                    href={`/blog/${blog.slug}`}
+                    className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
+                  >
+                    {blog.mainImage && (
+                      <div className="h-48 overflow-hidden">
+                        <img
+                          src={urlFor(blog.mainImage).width(600).height(400).url()}
+                          alt={blog.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        {blog.categories?.map((category: string, idx: number) => (
+                          <span
+                            key={idx}
+                            className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full"
+                          >
+                            {category}
+                          </span>
+                        ))}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                        {blog.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4 line-clamp-3">
+                        {blog.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <span>{blog.author}</span>
+                        <span>{format(new Date(blog.publishedAt), 'MMM dd, yyyy')}</span>
+                      </div>
                     </div>
-                  )}
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      {blog.categories?.map((category: string, idx: number) => (
-                        <span
-                          key={idx}
-                          className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full"
-                        >
-                          {category}
-                        </span>
-                      ))}
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
-                      {blog.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-3">
-                      {blog.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-sm text-gray-500">
-                      <span>{blog.author}</span>
-                      <span>{format(new Date(blog.publishedAt), 'MMM dd, yyyy')}</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                ))
+              ) : (
+                <div className="col-span-full text-center py-12">
+                  <p className="text-gray-600 text-lg">No blog posts available yet.</p>
+                </div>
+              )}
             </div>
           </div>
         </section>

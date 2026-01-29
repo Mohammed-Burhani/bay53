@@ -8,6 +8,11 @@ import { PortableText } from '@portabletext/react';
 
 export async function generateStaticParams() {
   const blogs = await getAllBlogs();
+  
+  if (!blogs || !Array.isArray(blogs)) {
+    return [];
+  }
+  
   return blogs.map((blog: any) => ({
     slug: blog.slug,
   }));
