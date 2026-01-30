@@ -9,6 +9,9 @@ import { getModuleBySlug, getAllModules } from "@/lib/sanity-queries";
 import { urlFor } from "@/lib/sanity";
 import { notFound } from "next/navigation";
 
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const modules = await getAllModules();
   

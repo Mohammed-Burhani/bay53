@@ -6,6 +6,9 @@ import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { PortableText } from '@portabletext/react';
 
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const blogs = await getAllBlogs();
   

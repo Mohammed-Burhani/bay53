@@ -5,6 +5,9 @@ import SeamlessIntegration from "@/components/sections/seamless-integration";
 import CtaBanner from "@/components/sections/cta-banner";
 import Footer from "@/components/sections/footer";
 
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
 export default function ModulesPage() {
   return (
     <div className="min-h-screen">

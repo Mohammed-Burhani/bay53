@@ -5,6 +5,9 @@ import { urlFor } from "@/lib/sanity";
 import Link from "next/link";
 import { format } from "date-fns";
 
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
 export default async function BlogPage() {
   const blogs = await getAllBlogs();
 
