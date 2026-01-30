@@ -3,7 +3,8 @@ import { client } from './sanity'
 // Module queries
 export async function getAllModules() {
   try {
-    return await client.fetch(`
+    return await client.fetch(
+      `
       *[_type == "module"] | order(order asc) {
         _id,
         title,
@@ -13,7 +14,13 @@ export async function getAllModules() {
         heroImage,
         order
       }
-    `)
+    `,
+      {},
+      { 
+        cache: 'no-store',
+        next: { revalidate: 0 }
+      }
+    )
   } catch (error) {
     console.error('Error fetching modules:', error);
     return [];
@@ -37,7 +44,11 @@ export async function getModuleBySlug(slug: string) {
         workflow
       }
     `,
-      { slug }
+      { slug },
+      { 
+        cache: 'no-store',
+        next: { revalidate: 0 }
+      }
     )
   } catch (error) {
     console.error('Error fetching module by slug:', error);

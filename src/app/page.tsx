@@ -6,8 +6,9 @@ import Testimonials from "@/components/sections/testimonials";
 import CTA from "@/components/sections/cta";
 import Footer from "@/components/sections/footer";
 
-// Revalidate every 60 seconds (ISR)
-export const revalidate = 60;
+// Force dynamic rendering - no caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function Home() {
   return (
