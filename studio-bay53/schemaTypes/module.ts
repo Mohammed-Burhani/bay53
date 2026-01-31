@@ -118,9 +118,23 @@ export default defineType({
             {name: 'step', type: 'string', title: 'Step Number'},
             {name: 'title', type: 'string', title: 'Title'},
             {name: 'description', type: 'text', title: 'Description'},
+            {
+              name: 'icon',
+              type: 'image',
+              title: 'Icon Image',
+              options: {
+                hotspot: true,
+              },
+            },
           ],
         },
       ],
+    }),
+    defineField({
+      name: 'cta_title',
+      title: 'CTA Title',
+      type: 'text',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'order',
