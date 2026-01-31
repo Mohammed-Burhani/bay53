@@ -41,7 +41,8 @@ export async function getModuleBySlug(slug: string) {
         challenges,
         solutions,
         features,
-        workflow
+        workflow,
+        cta_title
       }
     `,
       { slug },

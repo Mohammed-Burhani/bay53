@@ -60,7 +60,7 @@ export default async function ModuleDetailsPage({
           workflow={data.workflow} 
         />
         <ModuleCTA 
-          moduleName={data.title} 
+          moduleName={data.cta_title} 
         />
       </main>
       <Footer />

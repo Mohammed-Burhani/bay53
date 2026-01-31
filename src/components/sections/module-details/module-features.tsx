@@ -16,14 +16,14 @@ const ModuleFeatures = ({ features }: ModuleFeaturesProps) => {
   const renderIcon = (icon: any) => {
     if (!icon) return null;
     
-    const iconUrl = urlFor(icon).width(64).height(64).url();
+    const iconUrl = urlFor(icon).url();
     
     return (
       <Image
         src={iconUrl}
         alt="Feature icon"
-        width={32}
-        height={32}
+        width={400}
+        height={400}
         className="w-8 h-8 object-contain"
       />
     );
@@ -36,7 +36,7 @@ const ModuleFeatures = ({ features }: ModuleFeaturesProps) => {
     <section className="py-20 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 3</h2>
+          {/* <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 3</h2> */}
           <h3 className="text-4xl font-bold text-gray-900">Key Features & Capabilities</h3>
         </div>
 

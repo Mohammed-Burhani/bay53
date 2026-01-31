@@ -17,15 +17,15 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
   const renderIcon = (icon: any, bgColorClass: string) => {
     if (!icon) return null;
     
-    const iconUrl = urlFor(icon).width(48).height(48).url();
+    const iconUrl = urlFor(icon).url();
     
     return (
       <div className={`shrink-0 w-12 h-12 rounded-xl ${bgColorClass} flex items-center justify-center p-2`}>
         <Image
           src={iconUrl}
           alt="Icon"
-          width={32}
-          height={32}
+          width={400}
+          height={400}
           className="w-8 h-8 object-contain"
         />
       </div>
@@ -43,7 +43,7 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
     <section className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 2</h2>
+          {/* <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 2</h2> */}
           <h3 className="text-4xl font-bold text-gray-900">Understanding Your Challenges & Our Solutions</h3>
         </div>
 

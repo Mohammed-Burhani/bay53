@@ -27,11 +27,11 @@ const ModuleWorkflow = ({ moduleName, workflow }: ModuleWorkflowProps) => {
     <section className="py-20 px-4 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 4</h2>
+          {/* <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 4</h2> */}
           <h3 className="text-4xl font-bold text-gray-900">How the Bay53 {moduleName} Workflow Works</h3>
         </div>
 
-        <div className="relative bg-gradient-to-r from-blue-50 to-indigo-50 rounded-[3rem] p-12 lg:p-20 border border-indigo-100/50">
+        <div className="relative bg-linear-to-r from-blue-50 to-indigo-50 rounded-[3rem] p-12 lg:p-20 border border-indigo-100/50">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
             {validWorkflow.map((step, index) => (
               <div key={index} className="relative group">
