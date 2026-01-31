@@ -13,6 +13,7 @@ const modules = [
     _type: 'module',
     title: 'Accounting',
     slug: {_type: 'slug', current: 'accounting'},
+    icon: 'BarChart3',
     heroTitle: 'Accounting & Financial Management',
     heroDescription:
       'Streamline your financial operations with our comprehensive accounting module. From general ledger to real-time reporting, manage everything in one integrated platform.',
@@ -100,6 +101,7 @@ const modules = [
     _type: 'module',
     title: 'Inventory',
     slug: {_type: 'slug', current: 'inventory'},
+    icon: 'Package',
     heroTitle: 'Smart Inventory & Warehouse Management',
     heroDescription:
       'Optimize your stock levels and warehouse operations with real-time tracking, automated replenishment, and multi-location management.',
@@ -187,6 +189,7 @@ const modules = [
     _type: 'module',
     title: 'Sales & Distribution',
     slug: {_type: 'slug', current: 'sales'},
+    icon: 'TrendingUp',
     heroTitle: 'Accelerate Your Sales Performance',
     heroDescription:
       'From lead to cash, manage your entire sales cycle with integrated CRM, quotation management, and automated fulfillment.',

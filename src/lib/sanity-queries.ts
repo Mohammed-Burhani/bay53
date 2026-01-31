@@ -9,6 +9,7 @@ export async function getAllModules() {
         _id,
         title,
         "slug": slug.current,
+        icon,
         heroTitle,
         heroDescription,
         heroImage,

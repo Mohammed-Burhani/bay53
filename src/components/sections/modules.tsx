@@ -9,62 +9,30 @@ import {
   Users, 
   Banknote, 
   Award,
-  ArrowRight
+  ArrowRight,
+  ChartColumn,
+  Settings,
+  ShieldCheck
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getAllModules } from '@/lib/sanity-queries';
 
-const modules = [
-  {
-    id: 'accounting',
-    title: 'Accounting',
-    description: 'Comprehensive financial management with real-time reporting, multi-currency support...',
-    icon: BarChart3,
-  },
-  {
-    id: 'inventory',
-    title: 'Inventory',
-    description: 'Real-time inventory tracking with automated stock management, multi-warehouse support...',
-    icon: Package,
-  },
-  {
-    id: 'sales',
-    title: 'Sales & Distribution',
-    description: 'End-to-end sales management from quotation to delivery with integrated logistics...',
-    icon: TrendingUp,
-  },
-  {
-    id: 'purchase',
-    title: 'Purchase',
-    description: 'Streamlined procurement process with vendor management, purchase orders, and automated...',
-    icon: ShoppingCart,
-  },
-  {
-    id: 'production',
-    title: 'Production',
-    description: 'Complete production planning and control with BOM management, work order tracking...',
-    icon: Factory,
-  },
-  {
-    id: 'crm',
-    title: 'CRM',
-    description: '360-degree customer relationship management with lead tracking, opportunity management...',
-    icon: Users,
-  },
-  {
-    id: 'payroll',
-    title: 'Payroll',
-    description: 'Automated payroll processing with statutory compliance, leave management, and employee...',
-    icon: Banknote,
-  },
-  {
-    id: 'quality',
-    title: 'Quality Control',
-    description: 'Comprehensive quality management with inspection plans, non-conformance tracking...',
-    icon: Award,
-  },
-];
+const iconMap: Record<string, any> = {
+  BarChart3,
+  Package,
+  TrendingUp,
+  ShoppingCart,
+  Factory,
+  Users,
+  Banknote,
+  Award,
+  ChartColumn,
+  Settings,
+  ShieldCheck
+};
 
-const IntegratedModules = () => {
+const IntegratedModules = async () => {
+  const modules = await getAllModules();
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-indigo-50">
       <div className="max-w-7xl mx-auto">
@@ -78,27 +46,30 @@ const IntegratedModules = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {modules.map((module, index) => (
-            <Link 
-              key={index} 
-              href={`/modules/${module.id}`}
-              className="rounded-xl bg-white shadow-sm border-2 border-transparent hover:border-indigo-300 hover:shadow-lg transition-all duration-300 group cursor-pointer overflow-hidden flex flex-col items-center text-center p-6 pt-8"
-            >
-              <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors duration-300">
-                <module.icon 
-                  size={32} 
-                  className="text-indigo-600 group-hover:text-white transition-colors duration-300" 
-                  strokeWidth={1.5}
-                />
-              </div>
-              <h3 className="text-[18px] font-semibold text-gray-900 mb-3 tracking-tight">
-                {module.title}
-              </h3>
-              <p className="text-[14px] text-gray-600 leading-relaxed">
-                {module.description}
-              </p>
-            </Link>
-          ))}
+          {modules.map((module: any) => {
+            const IconComponent = iconMap[module.icon] || Package;
+            return (
+              <Link 
+                key={module._id} 
+                href={`/modules/${module.slug}`}
+                className="rounded-xl bg-white shadow-sm border-2 border-transparent hover:border-indigo-300 hover:shadow-lg transition-all duration-300 group cursor-pointer overflow-hidden flex flex-col items-center text-center p-6 pt-8"
+              >
+                <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors duration-300">
+                  <IconComponent 
+                    size={32} 
+                    className="text-indigo-600 group-hover:text-white transition-colors duration-300" 
+                    strokeWidth={1.5}
+                  />
+                </div>
+                <h3 className="text-[18px] font-semibold text-gray-900 mb-3 tracking-tight">
+                  {module.title}
+                </h3>
+                <p className="text-[14px] text-gray-600 leading-relaxed">
+                  {module.heroDescription}
+                </p>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="text-center mt-12">

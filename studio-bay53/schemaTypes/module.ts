@@ -22,6 +22,13 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'icon',
+      title: 'Icon Name',
+      type: 'string',
+      description: 'Lucide icon name (e.g., BarChart3, Package, TrendingUp, ShoppingCart, Factory, Users, Banknote, Award, ChartColumn, Settings, ShieldCheck)',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'heroTitle',
       title: 'Hero Title',
       type: 'string',
