@@ -1,10 +1,12 @@
 import React from 'react';
-import { MousePointer2, Settings, BarChart4, ClipboardCheck, ArrowRight } from 'lucide-react';
+import { urlFor } from '@/lib/sanity';
+import Image from 'next/image';
 
 interface WorkflowStep {
   step: string;
   title: string;
   description: string;
+  icon?: any; // Sanity image object
 }
 
 interface ModuleWorkflowProps {
@@ -13,12 +15,21 @@ interface ModuleWorkflowProps {
 }
 
 const ModuleWorkflow = ({ moduleName, workflow }: ModuleWorkflowProps) => {
-  const icons = [
-    <MousePointer2 className="w-8 h-8" />,
-    <Settings className="w-8 h-8" />,
-    <BarChart4 className="w-8 h-8" />,
-    <ClipboardCheck className="w-8 h-8" />
-  ];
+  const renderIcon = (icon: any) => {
+    if (!icon) return null;
+    
+    const iconUrl = urlFor(icon).url();
+    
+    return (
+      <Image
+        src={iconUrl}
+        alt="Workflow step icon"
+        width={400}
+        height={400}
+        className="w-8 h-8 object-contain group-hover:brightness-0 group-hover:invert transition-all duration-300"
+      />
+    );
+  };
 
   // Handle null or undefined array
   const validWorkflow = workflow || [];
@@ -36,8 +47,8 @@ const ModuleWorkflow = ({ moduleName, workflow }: ModuleWorkflowProps) => {
             {validWorkflow.map((step, index) => (
               <div key={index} className="relative group">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-20 h-20 rounded-full bg-white shadow-xl shadow-indigo-100 flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
-                    {icons[index % icons.length]}
+                  <div className="w-20 h-20 rounded-full bg-white shadow-xl shadow-indigo-100 flex items-center justify-center text-indigo-600 mb-6 group-hover:bg-indigo-600 transition-all duration-300">
+                    {renderIcon(step.icon)}
                   </div>
                   <h4 className="text-lg font-bold text-gray-900 mb-3">{step.title}</h4>
                   <p className="text-gray-600 text-sm leading-relaxed max-w-[200px]">

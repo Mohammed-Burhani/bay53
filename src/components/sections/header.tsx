@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,13 +30,9 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <a href="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center group-hover:shadow-lg transition-shadow duration-300">
-              <span className="text-white font-bold text-xl leading-none">B</span>
-            </div>
             <div className="flex flex-col">
-              <div className="font-bold text-xl text-gray-900 leading-tight">
-                Bay53
-              </div>
+              <Image src={"/logo.png"} alt="Bay53" width={500} height={500} className="w-16 h-10!" />
+              
               <div className="text-[12px] text-gray-500 leading-none">
                 by Burhani Technologies
               </div>
@@ -89,11 +86,10 @@ export default function Header() {
             <a
               key={link.name}
               href={link.href}
-              className={`block px-4 py-2 rounded-md text-sm font-medium ${
-                isActive(link.href)
+              className={`block px-4 py-2 rounded-md text-sm font-medium ${isActive(link.href)
                   ? "text-indigo-600 bg-indigo-50"
                   : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
-              }`}
+                }`}
             >
               {link.name}
             </a>

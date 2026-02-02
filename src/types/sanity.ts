@@ -34,6 +34,7 @@ export interface WorkflowStep {
   step: string
   title: string
   description: string
+  icon?: any // Sanity image object
 }
 
 export interface SanityTestimonial {
