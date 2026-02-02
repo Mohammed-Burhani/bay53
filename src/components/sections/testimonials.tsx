@@ -6,7 +6,7 @@ import { urlFor } from '@/lib/sanity';
 
 const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
   return (
-    <div className="flex flex-col h-full bg-white border border-gray-100 rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="flex flex-col h-full bg-white border border-gray-100 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
       <div className="flex gap-1 mb-6">
         {[...Array(testimonial.rating)].map((_, i) => (
           <Star key={i} className="w-5 h-5 fill-[#f59e0b] text-[#f59e0b]" />

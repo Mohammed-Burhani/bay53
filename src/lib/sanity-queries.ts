@@ -60,7 +60,8 @@ export async function getModuleBySlug(slug: string) {
 
 // Testimonial queries
 export async function getAllTestimonials() {
-  return client.fetch(`
+  return client.fetch(
+    `
     *[_type == "testimonial"] | order(order asc) {
       _id,
       name,
@@ -72,11 +73,18 @@ export async function getAllTestimonials() {
       featured,
       order
     }
-  `)
+  `,
+    {},
+    { 
+      cache: 'no-store',
+      next: { revalidate: 0 }
+    }
+  )
 }
 
 export async function getFeaturedTestimonials() {
-  return client.fetch(`
+  return client.fetch(
+    `
     *[_type == "testimonial" && featured == true] | order(order asc) {
       _id,
       name,
@@ -86,13 +94,20 @@ export async function getFeaturedTestimonials() {
       image,
       rating
     }
-  `)
+  `,
+    {},
+    { 
+      cache: 'no-store',
+      next: { revalidate: 0 }
+    }
+  )
 }
 
 // Blog queries
 export async function getAllBlogs() {
   try {
-    return await client.fetch(`
+    return await client.fetch(
+      `
       *[_type == "blog"] | order(publishedAt desc) {
         _id,
         title,
@@ -105,7 +120,13 @@ export async function getAllBlogs() {
         tags,
         featured
       }
-    `)
+    `,
+      {},
+      { 
+        cache: 'no-store',
+        next: { revalidate: 0 }
+      }
+    )
   } catch (error) {
     console.error('Error fetching blogs:', error);
     return [];
@@ -129,7 +150,11 @@ export async function getBlogBySlug(slug: string) {
         tags
       }
     `,
-      { slug }
+      { slug },
+      { 
+        cache: 'no-store',
+        next: { revalidate: 0 }
+      }
     )
   } catch (error) {
     console.error('Error fetching blog by slug:', error);
@@ -138,7 +163,8 @@ export async function getBlogBySlug(slug: string) {
 }
 
 export async function getFeaturedBlogs() {
-  return client.fetch(`
+  return client.fetch(
+    `
     *[_type == "blog" && featured == true] | order(publishedAt desc) {
       _id,
       title,
@@ -149,5 +175,11 @@ export async function getFeaturedBlogs() {
       mainImage,
       categories
     }
-  `)
+  `,
+    {},
+    { 
+      cache: 'no-store',
+      next: { revalidate: 0 }
+    }
+  )
 }
