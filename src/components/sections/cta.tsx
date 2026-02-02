@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button';
 const CTASection = () => {
   return (
     <section className="py-20 px-4 cta-gradient">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="px-7 mx-auto text-center">
         <h2 className="text-white text-4xl md:text-5xl font-bold mb-6 leading-tight">
           Ready to Transform Your Business?
         </h2>

@@ -8,7 +8,7 @@ interface ModuleCTAProps {
 const ModuleCTA = ({ moduleName }: ModuleCTAProps) => {
   return (
     <section className="py-20 px-4 bg-secondary">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="relative overflow-hidden bg-linear-to-r from-indigo-600 via-purple-600 to-indigo-700 rounded-[2.5rem] p-12 lg:p-20 text-center">
           <div className="relative z-10">
             <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 leading-tight">

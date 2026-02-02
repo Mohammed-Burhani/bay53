@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 const ContactForms = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-indigo-50">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Send us a Message Form - Indigo Themed */}
           <div className="rounded-xl bg-white text-[#111827] border-2 border-[#f3f4f6] shadow-xl overflow-hidden">

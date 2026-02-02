@@ -17,7 +17,7 @@ export default async function BlogPage() {
       <Header />
       <main>
         <section className="py-20 px-4 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-          <div className="max-w-7xl mx-auto">
+          <div className="px-7 mx-auto">
             <div className="text-center mb-16">
               <h1 className="text-5xl font-bold text-gray-900 mb-6">
                 Our Blog

@@ -3,7 +3,7 @@ import React from 'react';
 const ContactHero = () => {
   return (
     <section className="relative py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="px-7 mx-auto text-center">
         <h1 
           className="text-5xl font-bold text-gray-900 mb-6"
           style={{

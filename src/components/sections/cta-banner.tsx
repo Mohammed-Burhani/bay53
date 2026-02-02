@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 const CtaBanner = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-r from-[#4f46e5] to-[#9333ea] text-white">
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
+      <div className="px-7 mx-auto flex flex-col items-center text-center">
         {/* Heading */}
         <h2 
           className="text-white mb-6"

@@ -4,7 +4,7 @@ import { Target, Award } from 'lucide-react';
 const VisionMission = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-indigo-50">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="grid md:grid-cols-2 gap-8">
           {/* Our Vision Card */}
           <div className="rounded-xl bg-white text-card-foreground shadow border-2 border-transparent hover:border-indigo-200 hover:shadow-xl transition-all duration-300">

@@ -54,7 +54,7 @@ export default async function Testimonials() {
 
   return (
     <section className="py-24 px-4 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-[2.25rem] font-bold text-[#111827] mb-5 tracking-tight">
             What Our Clients Say

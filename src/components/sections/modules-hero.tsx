@@ -3,7 +3,7 @@ import React from 'react';
 const ModulesHero = () => {
   return (
     <section className="relative py-20 px-4 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      <div className="max-w-7xl mx-auto text-center">
+      <div className="px-7 mx-auto text-center">
         <h1 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight leading-[1.2]">
           Integrated ERP Modules
         </h1>

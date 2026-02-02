@@ -41,7 +41,7 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
 
   return (
     <section className="py-20 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="text-center mb-16">
           {/* <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 2</h2> */}
           <h3 className="text-4xl font-bold text-gray-900">Understanding Your Challenges & Our Solutions</h3>

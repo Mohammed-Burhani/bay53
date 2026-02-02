@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 const ContactCards = () => {
   return (
     <section className="py-12 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Email Card */}
           <div className="rounded-xl bg-card text-card-foreground shadow-soft border-2 border-[#f3f4f6] hover:shadow-xl transition-shadow duration-300 text-center">

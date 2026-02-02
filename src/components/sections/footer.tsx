@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 font-sans">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="px-7 mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           
           {/* Brand Philosophy Column */}
@@ -93,7 +93,7 @@ const Footer = () => {
 
       {/* Sub-Footer / Copyright Bar */}
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="px-7 mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400">
               © 2026 Burhani Technologies. All rights reserved.

@@ -25,7 +25,7 @@ const SeamlessIntegration = () => {
 
   return (
     <section className="py-20 px-4 bg-gray-50/50">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-[2.25rem] font-bold text-[#111827] mb-4 tracking-tight leading-[1.3]">
             Seamless Integration

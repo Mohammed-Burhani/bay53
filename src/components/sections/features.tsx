@@ -45,7 +45,7 @@ const featureData = [
 const FeaturesSection = () => {
   return (
     <section className="py-20 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-[2.25rem] font-bold text-gray-900 mb-4 tracking-tight leading-[1.2]">
             Why Choose Bay53?

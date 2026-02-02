@@ -36,7 +36,7 @@ const ModuleWorkflow = ({ moduleName, workflow }: ModuleWorkflowProps) => {
 
   return (
     <section className="py-20 px-4 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="text-center mb-16">
           {/* <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 4</h2> */}
           <h3 className="text-4xl font-bold text-gray-900">How the Bay53 {moduleName} Workflow Works</h3>

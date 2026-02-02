@@ -31,7 +31,7 @@ const Services = () => {
 
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-[#f8fafc] to-[#eef2ff]">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-[2.25rem] md:text-4xl font-bold text-[#111827] mb-4 tracking-tight">
             Our Services

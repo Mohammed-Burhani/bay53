@@ -3,7 +3,7 @@ import React from 'react';
 const WhoWeAre = () => {
   return (
     <section className="py-20 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Column: Text Content */}
           <div className="flex flex-col">

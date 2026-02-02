@@ -31,7 +31,7 @@ const benefits = [
 const BusinessBenefits = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-indigo-50">
-      <div className="max-w-7xl mx-auto">
+      <div className="px-7 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-[2.25rem] font-bold text-[#111827] mb-4 tracking-tight leading-[1.2]">
             Business Benefits

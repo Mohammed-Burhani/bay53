@@ -18,7 +18,7 @@ const FeaturesHero = () => {
       }}
     >
       <div 
-        className="max-w-7xl mx-auto text-center"
+        className="px-7 mx-auto text-center"
         style={{
           display: 'block',
           position: 'static',
