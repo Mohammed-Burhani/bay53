@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
               <div>
-                <Image src={"/logo.png"} alt="Bay53" width={500} height={500} className="w-16 h-10!" />
+                <Image src={"/logo.png"} alt="Bay53" width={500} height={500} className="w-24 h-14!" />
                 <div className="text-xs text-gray-400">ERP Solutions</div>
               </div>
             </div>
