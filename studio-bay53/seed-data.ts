@@ -326,7 +326,7 @@ const blogs = [
         children: [
           {
             _type: 'span',
-            text: 'Enterprise Resource Planning (ERP) systems are no longer just for large corporations. Modern cloud-based ERP solutions have made it possible for small and medium businesses to access powerful tools that were once out of reach.',
+            text: 'Enterprise Resource Planning (ERP) systems are no longer just for large corporations. Modern AI-Powered ERP solutions have made it possible for small and medium businesses to access powerful tools that were once out of reach.',
           },
         ],
       },

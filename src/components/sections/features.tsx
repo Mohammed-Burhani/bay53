@@ -12,8 +12,8 @@ import { Button } from '@/components/ui/button';
 const featureData = [
   {
     icon: <Cloud className="h-7 w-7 text-indigo-600 group-hover:text-white transition-colors duration-300" />,
-    title: "Cloud-Based Solution",
-    description: "Access your business data anytime, anywhere with our secure cloud infrastructure. No hardware investments required."
+    title: "AI-Powered Solution",
+    description: "Access your business data anytime, anywhere with our secure AI infrastructure. No hardware investments required."
   },
   {
     icon: <ArrowRight className="h-7 w-7 text-indigo-600 group-hover:text-white transition-colors duration-300" />,

@@ -14,8 +14,8 @@ import {
 const features = [
   {
     icon: Cloud,
-    title: "Cloud-Based Solution",
-    description: "Access your business data anytime, anywhere with our secure cloud infrastructure. No hardware investments required."
+    title: "AI-Powered Solution",
+    description: "Access your business data anytime, anywhere with our secure AI infrastructure. No hardware investments required."
   },
   {
     icon: LinkIcon,

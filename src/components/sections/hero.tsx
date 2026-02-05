@@ -12,7 +12,7 @@ const HeroSection = () => {
         <div className="text-center max-w-[896px] mx-auto">
           {/* Badge Label */}
           <div className="inline-flex items-center rounded-md border border-indigo-200 px-[10px] py-[2px] text-[12px] font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 shadow mb-6 bg-[#e0e7ff] text-[#4338ca] hover:bg-indigo-200">
-            Cloud-Based ERP Solution
+            AI-Powered ERP Solution
           </div>
 
           {/* Main Headline */}
@@ -26,7 +26,7 @@ const HeroSection = () => {
           </p>
           
           <p className="text-[18px] text-[#6b7280] mb-10 max-w-[768px] mx-auto leading-[1.5]">
-            Comprehensive cloud-based ERP solution designed for Small and Medium Enterprises. Streamline operations, increase efficiency, and drive growth with our integrated platform.
+            Comprehensive AI-Powered ERP solution designed for Small and Medium Enterprises. Streamline operations, increase efficiency, and drive growth with our integrated platform.
           </p>
 
           {/* Call to Action Buttons */}

@@ -26,12 +26,12 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-      <div className="px-7 mx-auto px-4 py-4">
+      <div className="px-7 mx-auto py-4">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
           <a href="/" className="flex items-center space-x-3 group">
             <div className="flex flex-col">
-              <Image src={"/logo.png"} alt="Bay53" width={500} height={500} className="w-24 h-14!" />
+              <Image src={"/logo.png"} alt="Bay53" width={500} height={500} className="w-26 h-18!" />
               
               <div className="text-[12px] text-gray-500 leading-none">
                 by Burhani Technologies

@@ -24,7 +24,7 @@ const benefits = [
   },
   {
     title: "Lower TCO",
-    description: "Reduce total cost of ownership with our cloud-based solution. No hardware investments, no maintenance overhead, and predictable subscription pricing."
+    description: "Reduce total cost of ownership with our AI-Powered solution. No hardware investments, no maintenance overhead, and predictable subscription pricing."
   }
 ];
 

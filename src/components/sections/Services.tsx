@@ -12,8 +12,8 @@ const Services = () => {
       description: "Automate repetitive tasks and save time"
     },
     {
-      title: "Cloud Solutions",
-      description: "Secure cloud services for enhanced collaboration"
+      title: "AI Solutions",
+      description: "Secure AI services for enhanced collaboration"
     },
     {
       title: "DevOps and Maintenance",

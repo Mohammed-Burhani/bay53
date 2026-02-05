@@ -7,7 +7,7 @@ const TechnicalSpecs = () => {
       title: "Platform & Infrastructure",
       items: [
         "100% Web-based - No installation required",
-        "Cloud-hosted on enterprise-grade servers",
+        "AI-hosted on enterprise-grade servers",
         "99.9% uptime guarantee",
         "Automatic backups every 24 hours",
         "SSL encryption for data security"
