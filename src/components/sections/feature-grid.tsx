@@ -61,13 +61,13 @@ const FEATURE_DATA = [
 
 export default function FeatureGrid() {
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-gradient-to-br from-white via-[#fef3f2] to-white">
       <div className="px-7 mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-[2.25rem] font-bold text-[#111827] mb-4 tracking-[-0.025em] leading-[1.2]">
-            Complete Feature Set
+          <h2 className="text-[2.25rem] font-bold text-[#0f172a] mb-4 tracking-[-0.025em] leading-[1.2]">
+            Complete <span className="gradient-text">Feature Set</span>
           </h2>
-          <p className="text-[1.125rem] text-[#4b5563] font-normal leading-[1.5]">
+          <p className="text-[1.125rem] text-[#475569] font-normal leading-[1.5]">
             Everything you need to run your business efficiently
           </p>
         </div>
@@ -76,19 +76,19 @@ export default function FeatureGrid() {
           {FEATURE_DATA.map((feature, index) => (
             <div 
               key={index}
-              className="rounded-xl bg-white text-[#111827] shadow-sm border-2 border-[#e5e7eb] hover:border-[#c7d2fe] hover:shadow-xl transition-all duration-300 group cursor-default"
+              className="rounded-xl bg-white/80 backdrop-blur-sm text-[#0f172a] shadow-lg border-2 border-white/50 hover:border-[#60a5fa]/30 hover:shadow-xl transition-all duration-300 group cursor-default hover:scale-105"
             >
               <div className="p-6">
-                <div className="w-16 h-16 bg-[#eef2ff] rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#4f46e5] transition-colors duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#60a5fa]/20 to-[#10b981]/20 rounded-xl flex items-center justify-center mb-5 group-hover:bg-gradient-to-br group-hover:from-[#60a5fa] group-hover:to-[#10b981] transition-all duration-300">
                   <feature.icon 
-                    className="h-8 w-8 text-[#4f46e5] group-hover:text-white transition-colors duration-300" 
+                    className="h-8 w-8 text-[#60a5fa] group-hover:text-white transition-colors duration-300" 
                     strokeWidth={2}
                   />
                 </div>
-                <h3 className="text-[1.25rem] font-semibold text-[#111827] mb-3 leading-[1.5]">
+                <h3 className="text-[1.25rem] font-semibold text-[#0f172a] mb-3 leading-[1.5]">
                   {feature.title}
                 </h3>
-                <p className="text-[#4b5563] text-[1rem] leading-[1.625]">
+                <p className="text-[#475569] text-[1rem] leading-[1.625]">
                   {feature.description}
                 </p>
               </div>

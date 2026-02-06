@@ -29,14 +29,14 @@ const ModulesGrid = async () => {
   const modules = await getAllModules();
 
   return (
-    <section className="py-20 px-4 bg-white" id="modules">
+    <section className="py-20 px-4 bg-gradient-to-br from-white via-[#fef3f2] to-white" id="modules">
       <div className="px-7 mx-auto">
         <div className="grid md:grid-cols-2 gap-8">
           {modules.map((module: any) => (
             <Link 
               key={module._id} 
               href={`/modules/${module.slug}`}
-              className="block rounded-xl bg-card text-card-foreground shadow border-2 border-gray-100 hover:border-indigo-300 hover:shadow-xl transition-all duration-300 group cursor-pointer"
+              className="block rounded-xl bg-white/80 backdrop-blur-sm text-card-foreground shadow-lg border-2 border-white/50 hover:border-[#60a5fa]/30 hover:shadow-xl transition-all duration-300 group cursor-pointer hover:scale-105"
             >
               <div className="flex flex-col space-y-1.5 p-6">
                 <div className="flex items-start justify-between">
@@ -50,13 +50,13 @@ const ModulesGrid = async () => {
                     </div>
                   )}
                 </div>
-                <div className="font-semibold tracking-tight text-2xl text-gray-900 mt-4">
+                <div className="font-semibold tracking-tight text-2xl text-[#0f172a] mt-4">
                   {module.title}
                 </div>
               </div>
               
               <div className="p-6 pt-0">
-                <p className="text-gray-600 mb-6 leading-relaxed text-base">
+                <p className="text-[#475569] mb-6 leading-relaxed text-base">
                   {module.heroDescription}
                 </p>
               </div>

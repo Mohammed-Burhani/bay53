@@ -30,13 +30,13 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-[#f8fafc] to-[#eef2ff]">
+    <section className="py-20 px-4 bg-gradient-to-br from-[#fef3f2] via-white to-[#f0fdf4]">
       <div className="px-7 mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-[2.25rem] md:text-4xl font-bold text-[#111827] mb-4 tracking-tight">
-            Our Services
+          <h2 className="text-[2.25rem] md:text-4xl font-bold text-[#0f172a] mb-4 tracking-tight">
+            Our <span className="gradient-text">Services</span>
           </h2>
-          <p className="text-lg text-[#4b5563] max-w-3xl mx-auto">
+          <p className="text-lg text-[#475569] max-w-3xl mx-auto">
             Comprehensive technology solutions to drive your business forward
           </p>
         </div>
@@ -45,21 +45,21 @@ const Services = () => {
           {servicesData.map((service, index) => (
             <div
               key={index}
-              className="rounded-xl bg-[#ffffff] text-[#111827] shadow-sm border-2 border-transparent hover:border-[#e0e7ff] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
+              className="rounded-xl bg-white/80 backdrop-blur-sm text-[#0f172a] shadow-lg border-2 border-white/50 hover:border-[#60a5fa]/30 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="p-6 pt-6">
                 <div className="flex items-start mb-3">
-                  <div className="mr-3 mt-1 flex-shrink-0">
+                  <div className="mr-3 mt-1 shrink-0">
                     <CircleCheckBig 
-                      className="h-6 w-6 text-[#16a34a]" 
+                      className="h-6 w-6 text-[#10b981]" 
                       strokeWidth={2}
                     />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-[#111827] mb-2 leading-[1.4]">
+                    <h3 className="text-lg font-semibold text-[#0f172a] mb-2 leading-[1.4]">
                       {service.title}
                     </h3>
-                    <p className="text-[#4b5563] text-sm leading-[1.625]">
+                    <p className="text-[#475569] text-sm leading-[1.625]">
                       {service.description}
                     </p>
                   </div>

@@ -6,57 +6,60 @@
 
 @theme {
   --color-background: #ffffff;
-  --color-foreground: #111827;
+  --color-foreground: #0f172a;
 
   --color-card: #ffffff;
-  --color-card-foreground: #111827;
+  --color-card-foreground: #0f172a;
 
   --color-popover: #ffffff;
-  --color-popover-foreground: #111827;
+  --color-popover-foreground: #0f172a;
 
-  --color-primary: #4f46e5;
+  --color-primary: #60a5fa;
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #f8fafc;
-  --color-secondary-foreground: #111827;
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #0f172a;
 
-  --color-muted: #f3f4f6;
-  --color-muted-foreground: #4b5563;
+  --color-muted: #f8fafc;
+  --color-muted-foreground: #64748b;
 
-  --color-accent: #9333ea;
+  --color-accent: #10b981;
   --color-accent-foreground: #ffffff;
 
   --color-destructive: #ef4444;
-  --color-destructive-foreground: #fafafa;
+  --color-destructive-foreground: #ffffff;
 
-  --color-border: #e5e7eb;
-  --color-input: #e5e7eb;
-  --color-ring: #4f46e5;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #60a5fa;
 
-  --color-chart-1: #4f46e5;
-  --color-chart-2: #9333ea;
-  --color-chart-3: #16a34a;
-  --color-chart-4: #f1c40f;
-  --color-chart-5: #e74c3c;
+  --color-chart-1: #60a5fa;
+  --color-chart-2: #10b981;
+  --color-chart-3: #f59e0b;
+  --color-chart-4: #ec4899;
+  --color-chart-5: #8b5cf6;
 
   --color-sidebar: #ffffff;
-  --color-sidebar-foreground: #4b5563;
-  --color-sidebar-primary: #4f46e5;
+  --color-sidebar-foreground: #64748b;
+  --color-sidebar-primary: #60a5fa;
   --color-sidebar-primary-foreground: #ffffff;
-  --color-sidebar-accent: #f5f3ff;
-  --color-sidebar-accent-foreground: #4f46e5;
-  --color-sidebar-border: #e5e7eb;
-  --color-sidebar-ring: #4f46e5;
+  --color-sidebar-accent: #f1f5f9;
+  --color-sidebar-accent-foreground: #60a5fa;
+  --color-sidebar-border: #e2e8f0;
+  --color-sidebar-ring: #60a5fa;
 
-  /* Brand Specific Tokens */
-  --color-brand-indigo: #4f46e5;
-  --color-brand-purple: #9333ea;
-  --color-brand-green: #16a34a;
-  --color-hero-start: #eef2ff;
-  --color-hero-mid: #f5f3ff;
-  --color-hero-end: #fdf2f8;
-  --color-footer-bg: #111827;
-  --color-footer-border: #1f2937;
+  /* Brand Specific Tokens - Vibrant Gradients */
+  --color-brand-coral: #ff6b6b;
+  --color-brand-pink: #ff8787;
+  --color-brand-green: #51cf66;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-blue: #60a5fa;
+  --color-brand-purple: #a78bfa;
+  --color-hero-start: #fef3f2;
+  --color-hero-mid: #f0fdf4;
+  --color-hero-end: #ecfeff;
+  --color-footer-bg: #0f172a;
+  --color-footer-border: #1e293b;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
@@ -98,33 +101,33 @@
 @layer base {
   :root {
     --background: #ffffff;
-    --foreground: #111827;
+    --foreground: #0f172a;
     --card: #ffffff;
-    --card-foreground: #111827;
+    --card-foreground: #0f172a;
     --popover: #ffffff;
-    --popover-foreground: #111827;
-    --primary: #4f46e5;
+    --popover-foreground: #0f172a;
+    --primary: #60a5fa;
     --primary-foreground: #ffffff;
-    --secondary: #f8fafc;
-    --secondary-foreground: #111827;
-    --muted: #f3f4f6;
-    --muted-foreground: #4b5563;
-    --accent: #9333ea;
+    --secondary: #f1f5f9;
+    --secondary-foreground: #0f172a;
+    --muted: #f8fafc;
+    --muted-foreground: #64748b;
+    --accent: #10b981;
     --accent-foreground: #ffffff;
     --destructive: #ef4444;
-    --destructive-foreground: #fafafa;
-    --border: #e5e7eb;
-    --input: #e5e7eb;
-    --ring: #4f46e5;
+    --destructive-foreground: #ffffff;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #60a5fa;
     --radius: 0.75rem;
     --sidebar-background: #ffffff;
-    --sidebar-foreground: #4b5563;
-    --sidebar-primary: #4f46e5;
+    --sidebar-foreground: #64748b;
+    --sidebar-primary: #60a5fa;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #f5f3ff;
-    --sidebar-accent-foreground: #4f46e5;
-    --sidebar-border: #e5e7eb;
-    --sidebar-ring: #4f46e5;
+    --sidebar-accent: #f1f5f9;
+    --sidebar-accent-foreground: #60a5fa;
+    --sidebar-border: #e2e8f0;
+    --sidebar-ring: #60a5fa;
   }
 }
 
@@ -148,31 +151,31 @@
     font-size: 3rem;
     font-weight: 700;
     letter-spacing: -0.025em;
-    color: #111827;
+    color: #0f172a;
   }
 
   h2 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #111827;
+    color: #0f172a;
   }
 
   h3 {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #111827;
+    color: #1e293b;
   }
 
   p {
     font-size: 1rem;
     line-height: 1.5;
-    color: #4b5563;
+    color: #475569;
   }
 
   label {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #374151;
+    color: #334155;
   }
 
   .container {
@@ -185,35 +188,64 @@
   }
 
   .hero-gradient {
-    background: linear-gradient(to bottom right, var(--color-hero-start), var(--color-hero-mid), var(--color-hero-end));
+    background: linear-gradient(135deg, #fef3f2 0%, #f0fdf4 50%, #ecfeff 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 25%, #51cf66 50%, #22d3ee 75%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 8s ease infinite;
+    background-size: 200% 200%;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .gradient-border {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+                linear-gradient(135deg, #ff6b6b, #51cf66, #22d3ee, #60a5fa) border-box;
   }
 
   .card-border-2 {
-    border: 2px solid #f3f4f6;
+    border: 2px solid #e2e8f0;
   }
 
   .shadow-soft {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .glow-effect {
+    box-shadow: 0 0 30px rgba(96, 165, 250, 0.15), 0 0 60px rgba(16, 185, 129, 0.1);
+  }
+
+  .gradient-bg-card {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.05) 0%, rgba(81, 207, 102, 0.05) 50%, rgba(96, 165, 250, 0.05) 100%);
   }
 
   .nav-link {
     font-size: 0.875rem;
     font-weight: 500;
-    color: #4b5563;
+    color: #475569;
     transition: color 0.3s ease;
   }
 
   .nav-link:hover {
-    color: var(--color-brand-indigo);
+    color: #60a5fa;
   }
 
   .footer-link {
     font-size: 0.875rem;
-    color: #9ca3af;
+    color: #94a3b8;
     transition: color 0.3s ease;
   }
 
   .footer-link:hover {
-    color: #818cf8;
+    color: #60a5fa;
   }
 }

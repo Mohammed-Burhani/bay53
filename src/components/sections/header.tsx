@@ -25,7 +25,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#e2e8f0] shadow-sm">
       <div className="px-7 mx-auto py-4">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
@@ -33,7 +33,7 @@ export default function Header() {
             <div className="flex flex-col">
               <Image src={"/logo.png"} alt="Bay53" width={500} height={500} className="w-26 h-18!" />
               
-              <div className="text-[12px] text-gray-500 leading-none">
+              <div className="text-[12px] text-[#64748b] leading-none">
                 by Burhani Technologies
               </div>
             </div>
@@ -48,8 +48,8 @@ export default function Header() {
                 variant="ghost"
                 className={
                   isActive(link.href)
-                    ? "text-indigo-600 bg-indigo-50 font-semibold"
-                    : "text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 font-medium"
+                    ? "text-[#60a5fa] bg-[#60a5fa]/10 font-semibold hover:bg-[#60a5fa]/20"
+                    : "text-[#475569] hover:text-[#60a5fa] hover:bg-[#60a5fa]/10 font-medium"
                 }
               >
                 <a href={link.href}>{link.name}</a>
@@ -59,21 +59,21 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild variant="default" className="shadow-md hover:shadow-lg">
+            <Button asChild variant="default" className="shadow-lg hover:shadow-xl bg-gradient-to-r from-[#60a5fa] to-[#10b981] hover:from-[#60a5fa]/90 hover:to-[#10b981]/90 border-0 font-semibold">
               <a href="/contact">Get Started</a>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg hover:bg-[#f1f5f9] transition-colors duration-200"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-gray-700" />
+              <X className="h-6 w-6 text-[#475569]" />
             ) : (
-              <Menu className="h-6 w-6 text-gray-700" />
+              <Menu className="h-6 w-6 text-[#475569]" />
             )}
           </button>
         </div>
@@ -81,21 +81,21 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg py-4 px-4 space-y-2 animate-in slide-in-from-top-2 duration-200">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-[#e2e8f0] shadow-lg py-4 px-4 space-y-2 animate-in slide-in-from-top-2 duration-200">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               className={`block px-4 py-2 rounded-md text-sm font-medium ${isActive(link.href)
-                  ? "text-indigo-600 bg-indigo-50"
-                  : "text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                  ? "text-[#60a5fa] bg-[#60a5fa]/10"
+                  : "text-[#475569] hover:bg-[#f1f5f9] hover:text-[#60a5fa]"
                 }`}
             >
               {link.name}
             </a>
           ))}
-          <div className="pt-2 border-t border-gray-100">
-            <Button asChild variant="default" className="w-full">
+          <div className="pt-2 border-t border-[#e2e8f0]">
+            <Button asChild variant="default" className="w-full bg-gradient-to-r from-[#60a5fa] to-[#10b981] border-0 font-semibold">
               <a href="/contact">Get Started</a>
             </Button>
           </div>

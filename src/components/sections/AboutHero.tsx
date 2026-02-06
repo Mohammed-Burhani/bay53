@@ -3,7 +3,7 @@ import React from 'react';
 const AboutHero = () => {
   return (
     <section 
-      className="relative py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50"
+      className="relative py-20 px-4 bg-gradient-to-br from-[#fef3f2] via-[#f0fdf4] to-[#ecfeff]"
       style={{
         display: 'block',
         position: 'relative',
@@ -24,27 +24,25 @@ const AboutHero = () => {
         }}
       >
         <h1 
-          className="text-5xl font-bold text-gray-900 mb-6"
+          className="text-5xl font-bold text-[#0f172a] mb-6"
           style={{
             display: 'block',
             fontSize: '48px',
             fontWeight: 700,
-            color: '#111827',
             marginBottom: '24px',
             fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',
             letterSpacing: '-0.025em',
             lineHeight: '1.25',
           }}
         >
-          About Burhani Technologies
+          About <span className="gradient-text">Burhani Technologies</span>
         </h1>
         <p 
-          className="text-xl text-gray-600 max-w-3xl mx-auto"
+          className="text-xl text-[#475569] max-w-3xl mx-auto"
           style={{
             display: 'block',
             fontSize: '20px',
             lineHeight: '1.6',
-            color: '#4b5563',
             maxWidth: '768px',
             margin: '0px auto',
             fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif',

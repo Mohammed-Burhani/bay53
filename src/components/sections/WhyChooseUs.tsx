@@ -29,14 +29,14 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-gradient-to-br from-white via-[#fef3f2] to-white">
       <div className="px-7 mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Why Enterprise Teams Choose Us
+          <h2 className="text-4xl font-bold text-[#0f172a] mb-4 tracking-tight">
+            Why Enterprise Teams <span className="gradient-text">Choose Us</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-[#475569] max-w-3xl mx-auto leading-relaxed">
             Our commitment to excellence and deep industry expertise sets us apart
           </p>
         </div>
@@ -46,13 +46,13 @@ const WhyChooseUs = () => {
           {advantages.map((advantage, index) => (
             <div
               key={index}
-              className="rounded-xl bg-white border-2 border-gray-100 shadow-sm hover:border-indigo-200 hover:shadow-xl transition-all duration-300 group"
+              className="rounded-xl bg-white/80 backdrop-blur-sm border-2 border-white/50 shadow-lg hover:border-[#60a5fa]/30 hover:shadow-xl transition-all duration-300 group hover:scale-105"
             >
               <div className="p-8 h-full flex flex-col">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors duration-200">
+                <h3 className="text-xl font-semibold text-[#0f172a] mb-3 group-hover:text-[#60a5fa] transition-colors duration-200">
                   {advantage.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-base">
+                <p className="text-[#475569] leading-relaxed text-base">
                   {advantage.description}
                 </p>
               </div>

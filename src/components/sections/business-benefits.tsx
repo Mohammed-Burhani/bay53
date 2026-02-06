@@ -30,13 +30,13 @@ const benefits = [
 
 const BusinessBenefits = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-gray-50 to-indigo-50">
+    <section className="py-20 px-4 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfeff]">
       <div className="px-7 mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-[2.25rem] font-bold text-[#111827] mb-4 tracking-tight leading-[1.2]">
-            Business Benefits
+          <h2 className="text-[2.25rem] font-bold text-[#0f172a] mb-4 tracking-tight leading-[1.2]">
+            Business <span className="gradient-text">Benefits</span>
           </h2>
-          <p className="text-[1.125rem] text-[#4b5563] leading-[1.5]">
+          <p className="text-[1.125rem] text-[#475569] leading-[1.5]">
             Real outcomes that make a difference to your bottom line
           </p>
         </div>
@@ -45,18 +45,18 @@ const BusinessBenefits = () => {
           {benefits.map((benefit, index) => (
             <div 
               key={index} 
-              className="rounded-xl bg-[#ffffff] text-[#111827] shadow-sm border-2 border-[#e5e7eb] hover:shadow-xl transition-shadow duration-300"
+              className="rounded-xl bg-white/80 backdrop-blur-sm text-[#0f172a] shadow-lg border-2 border-white/50 hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
               <div className="p-6 pt-6">
                 <div className="flex items-start mb-4">
-                  <div className="w-10 h-10 bg-[#dcfce7] rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <CircleCheckBig className="h-6 w-6 text-[#16a34a]" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#10b981]/20 to-[#51cf66]/20 rounded-full flex items-center justify-center mr-4 shrink-0">
+                    <CircleCheckBig className="h-6 w-6 text-[#10b981]" />
                   </div>
-                  <h3 className="text-[1.25rem] font-semibold text-[#111827] leading-[1.5]">
+                  <h3 className="text-[1.25rem] font-semibold text-[#0f172a] leading-[1.5]">
                     {benefit.title}
                   </h3>
                 </div>
-                <p className="text-[#4b5563] text-[1rem] leading-[1.625]">
+                <p className="text-[#475569] text-[1rem] leading-[1.625]">
                   {benefit.description}
                 </p>
               </div>

@@ -6,7 +6,7 @@ import { urlFor } from '@/lib/sanity';
 
 const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
   return (
-    <div className="flex flex-col h-full bg-white border border-gray-100 rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="flex flex-col h-full bg-white/80 backdrop-blur-sm border-2 border-white/50 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
       <div className="flex gap-1 mb-6">
         {[...Array(testimonial.rating)].map((_, i) => (
           <Star key={i} className="w-5 h-5 fill-[#f59e0b] text-[#f59e0b]" />
@@ -14,14 +14,14 @@ const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
       </div>
       
       <blockquote className="flex-grow">
-        <p className="text-[#4b5563] text-lg leading-relaxed italic mb-8">
+        <p className="text-[#475569] text-lg leading-relaxed italic mb-8">
           "{testimonial.content}"
         </p>
       </blockquote>
       
-      <div className="flex items-center gap-4 border-t border-gray-100 pt-6">
+      <div className="flex items-center gap-4 border-t border-[#e2e8f0] pt-6">
         {testimonial.image && (
-          <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-gray-100">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 border-2 border-[#e2e8f0]">
             <Image
               src={urlFor(testimonial.image).width(100).height(100).url()}
               alt={testimonial.name}
@@ -31,15 +31,15 @@ const TestimonialCard = ({ testimonial }: { testimonial: any }) => {
           </div>
         )}
         <div>
-          <h4 className="font-semibold text-[#111827] text-base leading-tight">
+          <h4 className="font-semibold text-[#0f172a] text-base leading-tight">
             {testimonial.name}
           </h4>
-          <p className="text-[#6b7280] text-sm font-medium mt-1">
+          <p className="text-[#64748b] text-sm font-medium mt-1">
             {testimonial.role}
           </p>
           <a 
             href="#" 
-            className="text-[#4f46e5] text-xs font-semibold hover:underline mt-0.5 block"
+            className="text-[#60a5fa] text-xs font-semibold hover:underline mt-0.5 block"
           >
             {testimonial.company}
           </a>
@@ -53,13 +53,13 @@ export default async function Testimonials() {
   const testimonials = await getFeaturedTestimonials();
 
   return (
-    <section className="py-24 px-4 bg-white overflow-hidden">
+    <section className="py-24 px-4 bg-gradient-to-br from-white via-[#fef3f2] to-white overflow-hidden">
       <div className="px-7 mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-[2.25rem] font-bold text-[#111827] mb-5 tracking-tight">
-            What Our Clients Say
+          <h2 className="text-4xl md:text-[2.25rem] font-bold text-[#0f172a] mb-5 tracking-tight">
+            What Our <span className="gradient-text">Clients Say</span>
           </h2>
-          <p className="text-xl text-[#4b5563] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-[#475569] max-w-3xl mx-auto leading-relaxed">
             Trusted by over 1000+ companies worldwide
           </p>
         </div>

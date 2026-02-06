@@ -2,26 +2,24 @@ import React from 'react';
 
 const ContactHero = () => {
   return (
-    <section className="relative py-20 px-4 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <section className="relative py-20 px-4 bg-gradient-to-br from-[#fef3f2] via-[#f0fdf4] to-[#ecfeff]">
       <div className="px-7 mx-auto text-center">
         <h1 
-          className="text-5xl font-bold text-gray-900 mb-6"
+          className="text-5xl font-bold text-[#0f172a] mb-6"
           style={{
             fontSize: '48px',
             fontWeight: 700,
             lineHeight: 1,
-            color: '#111827',
             marginBottom: '24px'
           }}
         >
-          Get in Touch
+          Get in <span className="gradient-text">Touch</span>
         </h1>
         <p 
-          className="text-xl text-gray-600 max-w-3xl mx-auto"
+          className="text-xl text-[#475569] max-w-3xl mx-auto"
           style={{
             fontSize: '20px',
             lineHeight: '1.5',
-            color: '#4b5563',
             maxWidth: '768px',
             marginLeft: 'auto',
             marginRight: 'auto'
