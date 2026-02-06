@@ -32,33 +32,32 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
     );
   };
 
-  const challengeBgColors = ["bg-red-50", "bg-orange-50", "bg-amber-50"];
-  const solutionBgColors = ["bg-green-50", "bg-blue-50", "bg-indigo-50"];
+  const challengeBgColors = ["bg-gradient-to-br from-[#ff6b6b]/20 to-[#ff8787]/20", "bg-gradient-to-br from-[#ff8787]/20 to-[#fbbf24]/20", "bg-gradient-to-br from-[#fbbf24]/20 to-[#f59e0b]/20"];
+  const solutionBgColors = ["bg-gradient-to-br from-[#10b981]/20 to-[#51cf66]/20", "bg-gradient-to-br from-[#60a5fa]/20 to-[#22d3ee]/20", "bg-gradient-to-br from-[#22d3ee]/20 to-[#a78bfa]/20"];
 
   // Handle null or undefined arrays
   const validChallenges = challenges || [];
   const validSolutions = solutions || [];
 
   return (
-    <section className="py-20 px-4 bg-white">
+    <section className="py-20 px-4 bg-gradient-to-br from-white via-[#fef3f2] to-white">
       <div className="px-7 mx-auto">
         <div className="text-center mb-16">
-          {/* <h2 className="text-sm font-semibold text-indigo-600 tracking-wide uppercase mb-2">Section 2</h2> */}
-          <h3 className="text-4xl font-bold text-gray-900">Understanding Your Challenges & Our Solutions</h3>
+          <h3 className="text-4xl font-bold text-[#0f172a]">Understanding Your <span className="gradient-text">Challenges</span> & Our Solutions</h3>
         </div>
 
-        <div className="bg-gray-50 rounded-3xl p-8 lg:p-12 border border-gray-100">
+        <div className="bg-gradient-to-br from-[#f8fafc] to-white rounded-3xl p-8 lg:p-12 border-2 border-white/50 shadow-xl">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Business Challenges */}
             <div className="space-y-8">
-              <h4 className="text-2xl font-bold text-gray-800 pb-4 border-b border-gray-200">Business Challenges</h4>
+              <h4 className="text-2xl font-bold text-[#0f172a] pb-4 border-b-2 border-[#e2e8f0]">Business Challenges</h4>
               <div className="space-y-6">
                 {validChallenges.map((item, index) => (
-                  <div key={index} className="flex gap-5 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
+                  <div key={index} className="flex gap-5 bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border-2 border-white/50 transition-all hover:shadow-xl hover:scale-105">
                     {renderIcon(item.icon, challengeBgColors[index % challengeBgColors.length])}
                     <div>
-                      <h5 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h5>
-                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                      <h5 className="text-lg font-bold text-[#0f172a] mb-1">{item.title}</h5>
+                      <p className="text-[#475569] leading-relaxed">{item.description}</p>
                     </div>
                   </div>
                 ))}
@@ -67,14 +66,14 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
 
             {/* How Bay53 Solves Them */}
             <div className="space-y-8">
-              <h4 className="text-2xl font-bold text-gray-800 pb-4 border-b border-gray-200">How Bay53 Solves Them</h4>
+              <h4 className="text-2xl font-bold text-[#0f172a] pb-4 border-b-2 border-[#e2e8f0]">How Bay53 Solves Them</h4>
               <div className="space-y-6">
                 {validSolutions.map((item, index) => (
-                  <div key={index} className="flex gap-5 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 transition-all hover:shadow-md">
+                  <div key={index} className="flex gap-5 bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border-2 border-white/50 transition-all hover:shadow-xl hover:scale-105">
                     {renderIcon(item.icon, solutionBgColors[index % solutionBgColors.length])}
                     <div>
-                      <h5 className="text-lg font-bold text-gray-900 mb-1">{item.title}</h5>
-                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                      <h5 className="text-lg font-bold text-[#0f172a] mb-1">{item.title}</h5>
+                      <p className="text-[#475569] leading-relaxed">{item.description}</p>
                     </div>
                   </div>
                 ))}
