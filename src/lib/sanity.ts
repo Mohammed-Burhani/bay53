@@ -5,9 +5,8 @@ export const client = createClient({
   projectId: 'cndhhzr5',
   dataset: 'production',
   apiVersion: '2024-01-01',
-  useCdn: false,
-  token: process.env.SANITY_API_TOKEN, // Optional: for draft content
-  perspective: 'published', // or 'previewDrafts' for draft content
+  useCdn: true, // Use CDN for better performance on public data
+  perspective: 'published', // Only fetch published content
 })
 
 const builder = createImageUrlBuilder(client)

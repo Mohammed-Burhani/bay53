@@ -3,12 +3,9 @@ import Hero from "@/components/sections/hero";
 import Features from "@/components/sections/features";
 import Modules from "@/components/sections/modules";
 import Testimonials from "@/components/sections/testimonials";
+import BlogSection from "@/components/sections/blog-section";
 import CTA from "@/components/sections/cta";
 import Footer from "@/components/sections/footer";
-
-// Force dynamic rendering - no caching
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 
 export default function Home() {
   return (
@@ -19,6 +16,7 @@ export default function Home() {
         <Features />
         <Modules />
         <Testimonials />
+        <BlogSection />
         <CTA />
       </main>
       <Footer />
