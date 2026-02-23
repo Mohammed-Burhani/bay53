@@ -32,7 +32,7 @@ export default function Header() {
           {/* Logo Section */}
           <a href="/" className="flex items-center space-x-3 group">
             <div className="flex flex-col">
-              <Image src={"/logo.png"} alt="Bay53" width={500} height={500} className="w-26 h-18!" />
+              <Image src={"/logo.png"} alt="BAY53" width={500} height={500} className="w-26 h-18!" />
               
               <div className="text-[12px] text-[#64748b] leading-none">
                 by Burhani Technologies

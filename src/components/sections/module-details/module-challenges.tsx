@@ -64,9 +64,9 @@ const ModuleChallenges = ({ challenges, solutions }: ModuleChallengesProps) => {
               </div>
             </div>
 
-            {/* How Bay53 Solves Them */}
+            {/* How BAY53 Solves Them */}
             <div className="space-y-8">
-              <h4 className="text-2xl font-bold text-[#0f172a] pb-4 border-b-2 border-[#e2e8f0]">How Bay53 Solves Them</h4>
+              <h4 className="text-2xl font-bold text-[#0f172a] pb-4 border-b-2 border-[#e2e8f0]">How BAY53 Solves Them</h4>
               <div className="space-y-6">
                 {validSolutions.map((item, index) => (
                   <div key={index} className="flex gap-5 bg-white/80 backdrop-blur-sm p-6 rounded-2xl shadow-lg border-2 border-white/50 transition-all hover:shadow-xl hover:scale-105">

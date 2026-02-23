@@ -22,12 +22,12 @@ const DemoCTA: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
       
       <div className="max-w-[896px] mx-auto text-center relative z-10">
-        {/* Heading: Experience Bay53 in Action */}
+        {/* Heading: Experience BAY53 in Action */}
         <h2 
           id="cta-heading"
           className="text-[36px] md:text-[40px] font-bold mb-6 tracking-tight leading-[1.2] text-white"
         >
-          Experience <span className="drop-shadow-lg">Bay53</span> in Action
+          Experience <span className="drop-shadow-lg">BAY53</span> in Action
         </h2>
 
         {/* Subtext */}

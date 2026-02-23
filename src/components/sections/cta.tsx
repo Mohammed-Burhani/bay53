@@ -27,7 +27,7 @@ const CTASection = () => {
           Ready to Transform Your Business?
         </h2>
         <p className="text-white/95 text-xl mb-10 max-w-2xl mx-auto font-medium">
-          Join 1000+ companies that trust Bay53 for their business operations
+          Join 1000+ companies that trust BAY53 for their business operations
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

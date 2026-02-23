@@ -38,7 +38,7 @@ const ModuleWorkflow = ({ moduleName, workflow }: ModuleWorkflowProps) => {
     <section className="py-20 px-4 bg-gradient-to-br from-white via-[#ecfeff] to-white overflow-hidden">
       <div className="px-7 mx-auto">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-bold text-[#0f172a]">How the Bay53 <span className="gradient-text">{moduleName}</span> Workflow Works</h3>
+          <h3 className="text-4xl font-bold text-[#0f172a]">How the BAY53 <span className="gradient-text">{moduleName}</span> Workflow Works</h3>
         </div>
 
         <div className="relative bg-gradient-to-br from-[#ecfeff]/50 to-[#f0fdf4]/50 rounded-[3rem] p-12 lg:p-20 border-2 border-white/50 shadow-xl">

@@ -12,7 +12,7 @@ const ModuleCTA = ({ moduleName }: ModuleCTAProps) => {
         <div className="relative overflow-hidden bg-gradient-to-r from-[#60a5fa] via-[#10b981] to-[#22d3ee] rounded-[2.5rem] p-12 lg:p-20 text-center">
           <div className="relative z-10">
             <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-              {moduleName || "Ready to transform your management? Start your journey with Bay53 ERP today."}
+              {moduleName || "Ready to transform your management? Start your journey with BAY53 ERP today."}
             </h2>
             <div className="flex justify-center mt-10">
               <Button size="lg" variant="default" className="bg-white text-[#0f172a] hover:bg-white/95 px-10 py-5 text-lg shadow-2xl hover:shadow-3xl font-semibold border-0">

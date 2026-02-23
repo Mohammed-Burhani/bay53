@@ -84,7 +84,7 @@ Thank you for reaching out to us. We have received your message and will review 
 A member of our team will contact you shortly to discuss your inquiry.
 
 Best regards,
-Bay53 Team`,
+BAY53 Team`,
       html: `
       <!DOCTYPE html>
       <html lang="en">
@@ -104,7 +104,7 @@ Bay53 Team`,
           <p>Thank you for reaching out to us. We have received your message and will review the details you've shared with us.</p>
           <p>A member of our team will contact you shortly to discuss your inquiry.</p>
           <p>Best regards,</p>
-          <p><strong>Bay53 Team</strong></p>
+          <p><strong>BAY53 Team</strong></p>
         </div>
       </body>
       </html>
@@ -164,7 +164,7 @@ Thank you for requesting a demo of our solution. We have received your request a
 A member of our team will contact you shortly to schedule a convenient time for your personalized demo.
 
 Best regards,
-Bay53 Team`,
+BAY53 Team`,
       html: `
       <!DOCTYPE html>
       <html lang="en">
@@ -184,7 +184,7 @@ Bay53 Team`,
           <p>Thank you for requesting a demo of our solution. We have received your request and are excited to show you what we can do for <strong>${data.company}</strong>.</p>
           <p>A member of our team will contact you shortly to schedule a convenient time for your personalized demo.</p>
           <p>Best regards,</p>
-          <p><strong>Bay53 Team</strong></p>
+          <p><strong>BAY53 Team</strong></p>
         </div>
       </body>
       </html>

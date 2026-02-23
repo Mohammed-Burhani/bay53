@@ -282,7 +282,7 @@ const testimonials = [
     role: 'Managing Director',
     company: 'Alpha Manufacturing Ltd.',
     content:
-      'Bay53 has transformed our business operations completely. The integrated modules and real-time reporting have given us unprecedented visibility into our operations. Highly recommended for SMEs!',
+      'BAY53 has transformed our business operations completely. The integrated modules and real-time reporting have given us unprecedented visibility into our operations. Highly recommended for SMEs!',
     rating: 5,
     featured: true,
     order: 1,
@@ -293,7 +293,7 @@ const testimonials = [
     role: 'CFO',
     company: 'TechVision Solutions Pvt. Ltd.',
     content:
-      'The financial management capabilities of Bay53 are exceptional. From multi-currency support to automated reconciliation, everything works seamlessly. The support team is always there when we need them.',
+      'The financial management capabilities of BAY53 are exceptional. From multi-currency support to automated reconciliation, everything works seamlessly. The support team is always there when we need them.',
     rating: 5,
     featured: true,
     order: 2,
@@ -304,7 +304,7 @@ const testimonials = [
     role: 'Operations Manager',
     company: 'Global Traders Inc.',
     content:
-      'We were looking for an affordable yet powerful ERP solution for our growing business. Bay53 exceeded our expectations with its comprehensive features and ease of use. Best investment we made!',
+      'We were looking for an affordable yet powerful ERP solution for our growing business. BAY53 exceeded our expectations with its comprehensive features and ease of use. Best investment we made!',
     rating: 5,
     featured: true,
     order: 3,
@@ -316,7 +316,7 @@ const blogs = [
     _type: 'blog',
     title: '5 Ways ERP Systems Transform Small Businesses',
     slug: {_type: 'slug', current: '5-ways-erp-transforms-small-businesses'},
-    author: 'Bay53 Team',
+    author: 'BAY53 Team',
     publishedAt: new Date().toISOString(),
     excerpt:
       'Discover how modern ERP systems are helping small and medium businesses compete with larger enterprises through automation and integration.',

@@ -18,7 +18,7 @@ const HeroSection = () => {
 
           {/* Main Headline */}
           <h1 className="text-[48px] md:text-[60px] font-bold mb-6 text-[#0f172a] leading-[1.1] tracking-[-0.02em]">
-            Transform Your Business with <span className="gradient-text">Bay53 ERP</span>
+            Transform Your Business with <span className="gradient-text">BAY53 ERP</span>
           </h1>
 
           {/* Subtext Paragraphs */}

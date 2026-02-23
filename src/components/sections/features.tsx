@@ -48,7 +48,7 @@ const FeaturesSection = () => {
       <div className="px-7 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-[2.25rem] font-bold text-[#0f172a] mb-4 tracking-tight leading-[1.2]">
-            Why Choose <span className="gradient-text">Bay53</span>?
+            Why Choose <span className="gradient-text">BAY53</span>?
           </h2>
           <p className="text-[1.25rem] text-[#475569] max-w-3xl mx-auto leading-[1.6]">
             Powerful features designed to streamline your business operations and drive growth

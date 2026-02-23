@@ -18,7 +18,7 @@ const WhoWeAre = () => {
                 With over 14 years of expertise serving healthcare, manufacturing, construction, and enterprise clients globally, we have established ourselves as trusted technology partners for businesses seeking digital transformation.
               </p>
               <p>
-                Our flagship product, <strong className="font-bold text-[#0f172a]">Bay53</strong>, is a comprehensive AI-Powered ERP solution designed specifically for Small and Medium Enterprises (SMEs). Bay53 enables businesses to quickly move away from manual processes to a fully integrated business solution.
+                Our flagship product, <strong className="font-bold text-[#0f172a]">BAY53</strong>, is a comprehensive AI-Powered ERP solution designed specifically for Small and Medium Enterprises (SMEs). BAY53 enables businesses to quickly move away from manual processes to a fully integrated business solution.
               </p>
             </div>
           </div>

@@ -4,7 +4,7 @@ import { CircleCheckBig } from 'lucide-react';
 const benefits = [
   {
     title: "Increase ROI and Productivity",
-    description: "Bay53 streamlines all your business processes and eliminates any duplication or unnecessary wastage of resources. Automated workflows reduce manual errors and free up your team to focus on strategic initiatives."
+    description: "BAY53 streamlines all your business processes and eliminates any duplication or unnecessary wastage of resources. Automated workflows reduce manual errors and free up your team to focus on strategic initiatives."
   },
   {
     title: "Enhanced Decision Making",
@@ -16,7 +16,7 @@ const benefits = [
   },
   {
     title: "Scalable Growth",
-    description: "Bay53 grows with your business. Add new users, modules, and locations as needed without disruption. Our flexible architecture supports your expansion plans."
+    description: "BAY53 grows with your business. Add new users, modules, and locations as needed without disruption. Our flexible architecture supports your expansion plans."
   },
   {
     title: "Compliance & Control",

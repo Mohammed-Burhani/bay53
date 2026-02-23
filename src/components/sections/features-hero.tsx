@@ -69,7 +69,7 @@ const FeaturesHero = () => {
             zIndex: 'auto'
           }}
         >
-          Bay53 comes packed with features designed to streamline your operations, boost productivity, and drive business growth
+          BAY53 comes packed with features designed to streamline your operations, boost productivity, and drive business growth
         </p>
       </div>
     </section>

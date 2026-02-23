@@ -13,20 +13,20 @@ const BusinessHours = () => {
             </div>
           </div>
           <div className="p-6 pt-0">
-            <div className="space-y-3 text-center">
-              <div className="flex justify-between items-center max-w-md mx-auto">
-                <span className="text-gray-700 font-medium text-base">Monday - Friday:</span>
-                <span className="text-gray-600 text-base">9:00 AM - 6:00 PM IST</span>
+            <div className="space-y-3">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 max-w-md mx-auto">
+                <span className="text-gray-700 font-medium text-sm sm:text-base">Monday - Friday:</span>
+                <span className="text-gray-600 text-sm sm:text-base">9:00 AM - 6:00 PM IST</span>
               </div>
-              <div className="flex justify-between items-center max-w-md mx-auto">
-                <span className="text-gray-700 font-medium text-base">Saturday:</span>
-                <span className="text-gray-600 text-base">9:00 AM - 1:00 PM IST</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 max-w-md mx-auto">
+                <span className="text-gray-700 font-medium text-sm sm:text-base">Saturday:</span>
+                <span className="text-gray-600 text-sm sm:text-base">9:00 AM - 1:00 PM IST</span>
               </div>
-              <div className="flex justify-between items-center max-w-md mx-auto">
-                <span className="text-gray-700 font-medium text-base">Sunday:</span>
-                <span className="text-gray-600 text-base">Closed</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 max-w-md mx-auto">
+                <span className="text-gray-700 font-medium text-sm sm:text-base">Sunday:</span>
+                <span className="text-gray-600 text-sm sm:text-base">Closed</span>
               </div>
-              <p className="text-sm text-gray-500 mt-4 leading-relaxed max-w-lg mx-auto">
+              <p className="text-xs sm:text-sm text-gray-500 mt-4 leading-relaxed max-w-lg mx-auto text-center">
                 For urgent support, please call us or send an email. We typically respond within 24 hours.
               </p>
             </div>
