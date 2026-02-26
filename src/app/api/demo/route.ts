@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendDemoRequestEmail } from '@/lib/email';
+import { verifyRecaptcha } from '@/lib/recaptcha';
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,6 +15,26 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Verify reCAPTCHA token
+    if (!data.recaptchaToken) {
+      console.error('Missing reCAPTCHA token');
+      return NextResponse.json(
+        { error: 'reCAPTCHA verification required' },
+        { status: 400 }
+      );
+    }
+
+    const recaptchaResult = await verifyRecaptcha(data.recaptchaToken);
+    if (!recaptchaResult.success) {
+      console.error('reCAPTCHA verification failed:', recaptchaResult.error);
+      return NextResponse.json(
+        { error: recaptchaResult.error || 'reCAPTCHA verification failed' },
+        { status: 403 }
+      );
+    }
+
+    console.log('reCAPTCHA verified successfully, score:', recaptchaResult.score);
 
     const result = await sendDemoRequestEmail(data);
     console.log('Email send result:', result);

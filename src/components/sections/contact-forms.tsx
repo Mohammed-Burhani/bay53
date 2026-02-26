@@ -4,25 +4,37 @@ import React, { useState } from 'react';
 import { Send, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import { useRecaptcha } from '@/hooks/use-recaptcha';
 
 const ContactForms = () => {
   const [contactLoading, setContactLoading] = useState(false);
   const [demoLoading, setDemoLoading] = useState(false);
+  const { getRecaptchaToken } = useRecaptcha();
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setContactLoading(true);
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string,
-      subject: formData.get('subject') as string,
-      message: formData.get('message') as string,
-    };
-
     try {
+      // Get reCAPTCHA token
+      const recaptchaToken = await getRecaptchaToken('contact_form');
+      
+      if (!recaptchaToken) {
+        toast.error('reCAPTCHA verification failed. Please try again.');
+        setContactLoading(false);
+        return;
+      }
+
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        phone: formData.get('phone') as string,
+        subject: formData.get('subject') as string,
+        message: formData.get('message') as string,
+        recaptchaToken,
+      };
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -33,7 +45,8 @@ const ContactForms = () => {
         toast.success('Message sent successfully!');
         e.currentTarget.reset();
       } else {
-        toast.error('Failed to send message. Please try again.');
+        const errorData = await response.json();
+        toast.error(errorData.error || 'Failed to send message. Please try again.');
       }
     } catch (error) {
       toast.error('An error occurred. Please try again.');
@@ -46,17 +59,27 @@ const ContactForms = () => {
     e.preventDefault();
     setDemoLoading(true);
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string,
-      company: formData.get('company') as string,
-      employees: formData.get('employees') as string,
-      message: formData.get('message') as string,
-    };
-
     try {
+      // Get reCAPTCHA token
+      const recaptchaToken = await getRecaptchaToken('demo_request');
+      
+      if (!recaptchaToken) {
+        toast.error('reCAPTCHA verification failed. Please try again.');
+        setDemoLoading(false);
+        return;
+      }
+
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        phone: formData.get('phone') as string,
+        company: formData.get('company') as string,
+        employees: formData.get('employees') as string,
+        message: formData.get('message') as string,
+        recaptchaToken,
+      };
+
       const response = await fetch('/api/demo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -67,7 +90,8 @@ const ContactForms = () => {
         toast.success('Demo request sent successfully!');
         e.currentTarget.reset();
       } else {
-        toast.error('Failed to send demo request. Please try again.');
+        const errorData = await response.json();
+        toast.error(errorData.error || 'Failed to send demo request. Please try again.');
       }
     } catch (error) {
       toast.error('An error occurred. Please try again.');

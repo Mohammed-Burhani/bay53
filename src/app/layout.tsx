@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { RecaptchaProvider } from "@/components/RecaptchaProvider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "BAY53 ERP - AI-Powered ERP Solution for Small & Medium Enterprises",
@@ -21,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
+        <RecaptchaProvider>
+          {children}
+          <Toaster position="top-right" richColors />
+        </RecaptchaProvider>
       </body>
     </html>
   );
