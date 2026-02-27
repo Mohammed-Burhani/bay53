@@ -16,16 +16,24 @@ const ContactForms = () => {
     setContactLoading(true);
 
     try {
+      console.log('Starting contact form submission...');
+      console.log('Event target:', e.target);
+      console.log('Event currentTarget:', e.currentTarget);
+      
       // Get reCAPTCHA token
       const recaptchaToken = await getRecaptchaToken('contact_form');
+      console.log('reCAPTCHA token received:', recaptchaToken ? 'Yes' : 'No');
       
       if (!recaptchaToken) {
+        console.error('reCAPTCHA token is null or undefined');
         toast.error('reCAPTCHA verification failed. Please try again.');
         setContactLoading(false);
         return;
       }
 
-      const formData = new FormData(e.currentTarget);
+      // Use e.target instead of e.currentTarget for better compatibility
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
       const data = {
         name: formData.get('name') as string,
         email: formData.get('email') as string,
@@ -35,20 +43,26 @@ const ContactForms = () => {
         recaptchaToken,
       };
 
+      console.log('Sending request to /api/contact with data:', { ...data, recaptchaToken: 'HIDDEN' });
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
+      console.log('API response status:', response.status);
+
       if (response.ok) {
         toast.success('Message sent successfully!');
-        e.currentTarget.reset();
+        form.reset();
       } else {
         const errorData = await response.json();
+        console.error('API error:', errorData);
         toast.error(errorData.error || 'Failed to send message. Please try again.');
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       toast.error('An error occurred. Please try again.');
     } finally {
       setContactLoading(false);
@@ -60,16 +74,24 @@ const ContactForms = () => {
     setDemoLoading(true);
 
     try {
+      console.log('Starting demo form submission...');
+      console.log('Event target:', e.target);
+      console.log('Event currentTarget:', e.currentTarget);
+      
       // Get reCAPTCHA token
       const recaptchaToken = await getRecaptchaToken('demo_request');
+      console.log('reCAPTCHA token received:', recaptchaToken ? 'Yes' : 'No');
       
       if (!recaptchaToken) {
+        console.error('reCAPTCHA token is null or undefined');
         toast.error('reCAPTCHA verification failed. Please try again.');
         setDemoLoading(false);
         return;
       }
 
-      const formData = new FormData(e.currentTarget);
+      // Use e.target instead of e.currentTarget for better compatibility
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
       const data = {
         name: formData.get('name') as string,
         email: formData.get('email') as string,
@@ -80,20 +102,26 @@ const ContactForms = () => {
         recaptchaToken,
       };
 
+      console.log('Sending request to /api/demo with data:', { ...data, recaptchaToken: 'HIDDEN' });
+
       const response = await fetch('/api/demo', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
+      console.log('API response status:', response.status);
+
       if (response.ok) {
         toast.success('Demo request sent successfully!');
-        e.currentTarget.reset();
+        form.reset();
       } else {
         const errorData = await response.json();
+        console.error('API error:', errorData);
         toast.error(errorData.error || 'Failed to send demo request. Please try again.');
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       toast.error('An error occurred. Please try again.');
     } finally {
       setDemoLoading(false);
@@ -308,7 +336,7 @@ const ContactForms = () => {
                     className="flex min-h-[85px] w-full rounded-md border border-[#e2e8f0] bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-[#94a3b8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] disabled:cursor-not-allowed disabled:opacity-50 mt-1"
                   ></textarea>
                 </div>
-                <Button type="submit" variant="default" className="w-full bg-gradient-to-r from-[#10b981] to-[#22d3ee] hover:from-[#10b981]/90 hover:to-[#22d3ee]/90 shadow-lg hover:shadow-xl border-0 font-semibold" disabled={demoLoading}>
+                <Button type="submit" variant="default" className="w-full bg-linear-to-r from-[#10b981] to-brand-cyan hover:from-[#10b981]/90 hover:to-brand-cyan/90 shadow-lg hover:shadow-xl border-0 font-semibold" disabled={demoLoading}>
                   {demoLoading ? 'Sending...' : 'Request Demo'}
                   <Calendar className="ml-2 h-4 w-4" />
                 </Button>
