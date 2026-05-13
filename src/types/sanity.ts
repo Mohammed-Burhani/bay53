@@ -9,7 +9,17 @@ export interface SanityModule {
   solutions?: Solution[]
   features?: Feature[]
   workflow?: WorkflowStep[]
+  cta_title: string
+  productUrl: string
+  trialDuration: string
+  targetAudience?: string[]
+  useCases?: UseCase[]
   order: number
+}
+
+export interface UseCase {
+  industry: string
+  scenario: string
 }
 
 export interface Challenge {

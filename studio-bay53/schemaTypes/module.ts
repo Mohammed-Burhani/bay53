@@ -144,6 +144,41 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'productUrl',
+      title: 'Product/Trial URL',
+      type: 'url',
+      description: 'Direct link to the product signup/trial page for this specific module',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'trialDuration',
+      title: 'Trial Duration',
+      type: 'string',
+      description: 'e.g., "14 days", "30 days", "Free forever"',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'targetAudience',
+      title: 'Target Audience',
+      type: 'array',
+      of: [{type: 'string'}],
+      description: 'e.g., "Manufacturing firms", "Retail businesses", "Service companies"',
+    }),
+    defineField({
+      name: 'useCases',
+      title: 'Use Cases',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {name: 'industry', type: 'string', title: 'Industry'},
+            {name: 'scenario', type: 'text', title: 'Scenario'},
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: 'order',
       title: 'Display Order',
       type: 'number',

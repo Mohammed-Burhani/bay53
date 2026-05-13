@@ -4,6 +4,7 @@ import ModuleChallenges from "@/components/sections/module-details/module-challe
 import ModuleFeatures from "@/components/sections/module-details/module-features";
 import ModuleWorkflow from "@/components/sections/module-details/module-workflow";
 import ModuleCTA from "@/components/sections/module-details/module-cta";
+import StickyTrialBanner from "@/components/sections/module-details/sticky-trial-banner";
 import Footer from "@/components/sections/footer";
 import { getModuleBySlug, getAllModules } from "@/lib/sanity-queries";
 import { urlFor } from "@/lib/sanity";
@@ -46,7 +47,10 @@ export default async function ModuleDetailsPage({
         <ModuleHero 
           title={data.heroTitle} 
           description={data.heroDescription} 
-          image={heroImageUrl} 
+          image={heroImageUrl}
+          productUrl={data.productUrl}
+          trialDuration={data.trialDuration}
+          targetAudience={data.targetAudience}
         />
         <ModuleChallenges 
           challenges={data.challenges} 
@@ -60,9 +64,17 @@ export default async function ModuleDetailsPage({
           workflow={data.workflow} 
         />
         <ModuleCTA 
-          moduleName={data.cta_title} 
+          moduleName={data.cta_title}
+          productUrl={data.productUrl}
+          trialDuration={data.trialDuration}
+          useCases={data.useCases}
         />
       </main>
+      <StickyTrialBanner 
+        moduleName={data.title}
+        productUrl={data.productUrl || '#'}
+        trialDuration={data.trialDuration || '14 days'}
+      />
       <Footer />
     </div>
   );

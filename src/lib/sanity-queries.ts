@@ -43,7 +43,11 @@ export async function getModuleBySlug(slug: string) {
         solutions,
         features,
         workflow,
-        cta_title
+        cta_title,
+        productUrl,
+        trialDuration,
+        targetAudience,
+        useCases
       }
     `,
       { slug },
