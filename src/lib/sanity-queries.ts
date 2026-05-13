@@ -13,6 +13,9 @@ export async function getAllModules() {
         heroTitle,
         heroDescription,
         heroImage,
+        productUrl,
+        trialDuration,
+        targetAudience,
         order
       }
     `,
