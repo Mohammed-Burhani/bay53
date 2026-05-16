@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { RecaptchaProvider } from "@/components/RecaptchaProvider";
+import { QueryProvider } from "@/components/providers/QueryProvider";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
@@ -39,10 +40,12 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="antialiased">
-        <RecaptchaProvider>
-          {children}
-          <Toaster position="top-right" richColors />
-        </RecaptchaProvider>
+        <QueryProvider>
+          <RecaptchaProvider>
+            {children}
+            <Toaster position="top-right" richColors />
+          </RecaptchaProvider>
+        </QueryProvider>
       </body>
     </html>
   );
