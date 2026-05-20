@@ -5,6 +5,7 @@ export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
   const code = requestUrl.searchParams.get("code");
   const origin = requestUrl.origin;
+  const next = requestUrl.searchParams.get("next") || "/dashboard";
 
   if (code) {
     const supabase = await createClient(); 
@@ -13,41 +14,59 @@ export async function GET(request: Request) {
     if (!error && data.session) {
       const user = data.user;
       
-      // Call backend to register/login Google user
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/Auth/GoogleAuth`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            accept: "*/*",
-          },
-          body: JSON.stringify({
-            email: user.email,
-            name: user.user_metadata?.full_name || user.email?.split("@")[0],
-            googleId: user.id,
-            picture: user.user_metadata?.avatar_url,
-          }),
-        });
+      // Check if user exists in our database
+      const { data: existingUser } = await supabase
+        .from('users')
+        .select('id, company_id, onboarding_progress(*)')
+        .eq('auth_id', user.id)
+        .single();
 
-        if (response.ok) {
-          const authData = await response.json();
-          
-          // Store session in localStorage via redirect with data
-          // Use URL params to pass session data (will be picked up by client)
-          const sessionData = encodeURIComponent(JSON.stringify({
-            user: authData.user,
-            company: authData.company,
-            roles: authData.roles,
-            rights: authData.rights,
-          }));
-          
-          return NextResponse.redirect(
-            `${origin}/auth/success?session=${sessionData}&isNew=${authData.isNewUser}`
-          );
+      if (existingUser) {
+        // Existing user - check if onboarding is complete
+        if (existingUser.company_id && existingUser.onboarding_progress?.is_completed) {
+          // Fully onboarded - go to dashboard
+          return NextResponse.redirect(`${origin}/dashboard`);
+        } else {
+          // Incomplete onboarding - go to complete profile
+          return NextResponse.redirect(`${origin}/complete-profile`);
         }
-      } catch (err) {
-        console.error("Backend auth error:", err);
+      } else {
+        // New user - create user record and redirect to complete profile
+        try {
+          const { data: newUser, error: insertError } = await supabase
+            .from('users')
+            .insert({
+              auth_id: user.id,
+              email: user.email!,
+              username: user.email!.split('@')[0],
+              full_name: user.user_metadata?.full_name || user.user_metadata?.name,
+              avatar_url: user.user_metadata?.avatar_url || user.user_metadata?.picture,
+              auth_provider: 'google',
+              email_verified: true,
+            })
+            .select()
+            .single();
+
+          if (!insertError && newUser) {
+            // Create onboarding progress record
+            await supabase
+              .from('onboarding_progress')
+              .insert({
+                user_id: newUser.id,
+                step_3_admin_account: true, // Google auth completes step 3
+              });
+
+            // Redirect to complete profile
+            return NextResponse.redirect(`${origin}/complete-profile`);
+          }
+        } catch (err) {
+          console.error("Failed to create user:", err);
+        }
       }
+    }
+
+    if (error) {
+      console.error("Auth error:", error);
     }
   }
 
