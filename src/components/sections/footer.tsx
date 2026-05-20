@@ -36,6 +36,9 @@ const Footer = () => {
                 <a href="/modules" className="text-sm hover:text-[#60a5fa] transition-colors duration-200">Modules</a>
               </li>
               <li>
+                <a href="/pricing" className="text-sm hover:text-[#60a5fa] transition-colors duration-200">Pricing</a>
+              </li>
+              <li>
                 <a href="/about" className="text-sm hover:text-[#60a5fa] transition-colors duration-200">About Us</a>
               </li>
               <li>
