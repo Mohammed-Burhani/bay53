@@ -2,6 +2,8 @@
 
 import { useForm } from "react-hook-form";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useLogin, useGoogleLogin } from "@/lib/hooks/useAuth";
+import type { LoginPayload } from "@/lib/types/auth.types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,8 +11,6 @@ import { Eye, EyeOff, Loader2, Mail, Sparkles, BarChart3, Package, Users, Brain,
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
-import { LoginPayload } from "@/lib/types/auth.types";
-import { useGoogleLogin, useLogin } from "@/lib/hooks/useAuth";
 
 interface ReturningUser {
   userName: string;
@@ -351,7 +351,7 @@ export default function LoginForm() {
               type="button"
               onClick={handleGoogleLogin}
               variant="outline"
-              className="w-full h-11 rounded-xl font-semibold bg-white text-gray-700 border-2 border-gray-300 transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 hover:scale-[1.02] disabled:hover:scale-100 hover:text-brand-coral"
+              className="w-full h-11 rounded-xl font-semibold bg-white text-gray-700 border-2 border-gray-300 transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 hover:scale-[1.02] disabled:hover:scale-100"
               disabled={isGoogleLoading}
             >
               {isGoogleLoading ? (
@@ -399,7 +399,7 @@ export default function LoginForm() {
               type="button"
               onClick={() => router.push("/signup")}
               variant="outline"
-              className="w-full h-11 rounded-xl font-semibold border-2 transition-all duration-200 hover:scale-[1.02] hover:bg-transparent!"
+              className="w-full h-11 rounded-xl font-semibold border-2 transition-all duration-200 hover:scale-[1.02]"
               style={{ 
                 borderColor: "var(--bay-coral)",
                 color: "var(--bay-coral)"

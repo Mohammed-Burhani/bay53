@@ -1,148 +1,42 @@
 "use client";
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, Sparkles, Building2, MapPin, Mail, Phone, User, Lock, Upload, ChevronLeft, ChevronRight, Check } from "lucide-react";
+import { Loader2, Sparkles, BarChart3, Package, Users, Brain, FileText, Mail } from "lucide-react";
 import Image from "next/image";
 import { useGoogleSignup } from "@/lib/hooks/useAuth";
 import { toast } from "sonner";
 
-interface SignupFormData {
-  companyName: string;
-  country: string;
-  address: string;
-  email: string;
-  phone: string;
-  contactPerson: string;
-  gstNumber: string;
-  state: string;
-  pinCode: string;
-  currency: string;
-  adminUser: string;
-  password: string;
-  confirmPassword: string;
-  logo?: FileList;
-  natureOfBusiness: string;
-}
-
-const NATURE_OF_BUSINESS = [
-  "Retail",
-  "Wholesale",
-  "Distribution",
-  "Trading",
-  "Manufacturing",
-  "Fabrication",
-];
-
-const CURRENCIES = [
-  { code: "INR", symbol: "₹", name: "Indian Rupee" },
-  { code: "USD", symbol: "$", name: "US Dollar" },
-  { code: "EUR", symbol: "€", name: "Euro" },
-  { code: "GBP", symbol: "£", name: "British Pound" },
-  { code: "AED", symbol: "د.إ", name: "UAE Dirham" },
-];
-
-const INDIAN_STATES = [
-  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-  "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
-  "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
-  "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
-  "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
-  "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli and Daman and Diu",
-  "Delhi", "Jammu and Kashmir", "Ladakh", "Lakshadweep", "Puducherry"
-];
-
 export default function SignupForm() {
   const router = useRouter();
-  const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [logoPreview, setLogoPreview] = useState<string | null>(null);
-  const { mutate: googleSignup, isPending: isGoogleLoading } = useGoogleSignup();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-    setValue,
-    trigger,
-  } = useForm<SignupFormData>({
-    defaultValues: {
-      currency: "INR",
-      country: "India",
-    },
-  });
-
-  const password = watch("password");
+  const { mutate: googleSignup, isPending: isLoading } = useGoogleSignup();
 
   const handleGoogleSignup = () => {
     googleSignup(undefined, {
-      onSuccess: () => {
-        // After Google signup, redirect to complete profile
-        toast.success("Google authentication successful!");
-        router.push("/complete-profile");
-      },
-      onError: (error: any) => {
+      onError: (err) => {
         toast.error("Signup failed", {
-          description: error.message || "Please try again",
+          description: err.message || "Please try again",
         });
       },
     });
   };
 
-  const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 2 * 1024 * 1024) {
-        toast.error("File too large", {
-          description: "Logo must be less than 2MB",
-        });
-        return;
-      }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setLogoPreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleManualSignup = () => {
+    router.push("/company-setup");
   };
 
-  const nextStep = async () => {
-    let fieldsToValidate: (keyof SignupFormData)[] = [];
-    
-    if (step === 1) {
-      fieldsToValidate = ["companyName", "country", "address", "email", "phone", "contactPerson"];
-    } else if (step === 2) {
-      fieldsToValidate = ["gstNumber", "state", "pinCode", "currency", "natureOfBusiness"];
-    }
-
-    const isValid = await trigger(fieldsToValidate);
-    if (isValid) {
-      setStep((prev) => (prev + 1) as 1 | 2 | 3);
-    }
-  };
-
-  const prevStep = () => {
-    setStep((prev) => (prev - 1) as 1 | 2 | 3);
-  };
-
-  const onSubmit = (data: SignupFormData) => {
-    console.log("Form submitted:", data);
-    toast.success("Account created successfully!", {
-      description: "Welcome to BAY53 ERP",
-    });
-    // Handle form submission - send to API
-    // router.push("/dashboard");
-  };
+  const features = [
+    { icon: BarChart3, title: "Accounting & Billing", desc: "Complete financial management" },
+    { icon: Package, title: "Inventory Management", desc: "Real-time stock tracking" },
+    { icon: Users, title: "CRM", desc: "Customer relationship tools" },
+    { icon: FileText, title: "AI-Powered Reports", desc: "Intelligent insights & analytics" },
+    { icon: Brain, title: "bayAI Assistant", desc: "Your AI business companion" },
+  ];
 
   return (
     <div className="min-h-screen flex">
-      {/* Left Panel - Brand & Progress */}
-      <div className="hidden lg:flex lg:w-[45%] relative overflow-hidden bg-gradient-to-br from-orange-50 via-teal-50 to-blue-50 border-r-2 border-gray-200">
+      {/* Left Panel - Brand & Features */}
+      <div className="hidden lg:flex lg:w-[60%] relative overflow-hidden bg-linear-to-br from-orange-50 via-teal-50 to-blue-50 border-r-2 border-gray-200">
         {/* Animated Background Orbs */}
         <div className="absolute inset-0 overflow-hidden">
           <div 
@@ -153,65 +47,54 @@ export default function SignupForm() {
             className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full opacity-30 blur-3xl animate-float-delayed"
             style={{ background: "radial-gradient(circle, var(--bay-teal) 0%, transparent 70%)" }}
           />
+          <div 
+            className="absolute top-1/2 right-1/3 w-72 h-72 rounded-full opacity-25 blur-3xl animate-float"
+            style={{ 
+              background: "radial-gradient(circle, var(--bay-violet) 0%, transparent 70%)",
+              animationDelay: "-10s"
+            }}
+          />
         </div>
 
         {/* Content */}
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           {/* Logo */}
           <div className="space-y-2">
-            <Image 
-              src="/logo.png" 
-              alt="BAY53 Logo" 
-              width={200} 
-              height={100}
-              className="w-48 h-auto drop-shadow-lg"
-            />
+            <div className="relative inline-block">
+              <Image 
+                src="/logo.png" 
+                alt="BAY53 Logo" 
+                width={200} 
+                height={100}
+                className="w-48 h-auto drop-shadow-lg"
+              />
+            </div>
           </div>
 
-          {/* Progress Steps */}
-          <div className="space-y-6 max-w-lg">
-            <h2 className="text-2xl font-bold text-gray-900">Setup Your Business</h2>
-            <div className="space-y-4">
-              {[
-                { num: 1, title: "Company Information", desc: "Basic details about your business" },
-                { num: 2, title: "Business Details", desc: "GST, location, and business type" },
-                { num: 3, title: "Admin Account", desc: "Create your admin credentials" },
-              ].map((item) => (
+          {/* Features */}
+          <div className="space-y-4 max-w-lg">
+            {features.map((feature, idx) => {
+              const Icon = feature.icon;
+              return (
                 <div 
-                  key={item.num}
-                  className={`flex items-start gap-4 p-4 rounded-xl border transition-all duration-200 ${
-                    step === item.num
-                      ? "bg-white shadow-md border-gray-300"
-                      : step > item.num
-                      ? "bg-white/60 border-gray-200"
-                      : "bg-white/40 border-gray-200/50"
-                  }`}
+                  key={idx}
+                  className="flex items-start gap-4 p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200/50 shadow-sm transition-all duration-200 hover:shadow-md hover:bg-white"
                 >
                   <div 
-                    className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all ${
-                      step > item.num
-                        ? "bg-gradient-to-br from-green-400 to-green-600 text-white"
-                        : step === item.num
-                        ? "text-white"
-                        : "bg-gray-200 text-gray-500"
-                    }`}
-                    style={step === item.num ? { 
-                      background: "linear-gradient(135deg, var(--bay-coral), var(--bay-teal), var(--bay-violet))" 
-                    } : undefined}
+                    className="p-2.5 rounded-lg"
+                    style={{ 
+                      background: `linear-gradient(135deg, var(--bay-coral), var(--bay-teal), var(--bay-violet))`
+                    }}
                   >
-                    {step > item.num ? <Check className="w-4 h-4" /> : item.num}
+                    <Icon className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h3 className={`font-semibold text-sm ${step >= item.num ? "text-gray-900" : "text-gray-500"}`}>
-                      {item.title}
-                    </h3>
-                    <p className={`text-sm mt-0.5 ${step >= item.num ? "text-gray-600" : "text-gray-400"}`}>
-                      {item.desc}
-                    </p>
+                    <h3 className="font-semibold text-gray-900 text-sm">{feature.title}</h3>
+                    <p className="text-sm text-gray-600 mt-0.5">{feature.desc}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
 
           {/* Tagline */}
@@ -221,11 +104,11 @@ export default function SignupForm() {
         </div>
       </div>
 
-      {/* Right Panel - Form */}
-      <div className="w-full lg:w-[55%] flex items-center justify-center p-6 bg-white overflow-y-auto">
-        <div className="w-full max-w-2xl space-y-6 py-8">
+      {/* Right Panel - Signup Form */}
+      <div className="w-full lg:w-[40%] flex items-center justify-center p-6 bg-white">
+        <div className="w-full max-w-md space-y-8">
           {/* Mobile Logo */}
-          <div className="lg:hidden flex justify-center mb-6">
+          <div className="lg:hidden flex justify-center mb-8">
             <Image 
               src="/logo.png" 
               alt="BAY53 Logo" 
@@ -235,433 +118,108 @@ export default function SignupForm() {
             />
           </div>
 
-          {/* Header */}
+          {/* Greeting */}
           <div className="text-center space-y-2">
-            <h1 className="text-2xl font-bold text-gray-900">Create Your Account</h1>
-            <p className="text-sm text-gray-600">Step {step} of 3 - {
-              step === 1 ? "Company Information" : step === 2 ? "Business Details" : "Admin Account"
-            }</p>
+            <h1 className="text-2xl font-bold text-gray-900">Create your account</h1>
+            <p className="text-sm text-gray-600">Get started with BAY53 today</p>
           </div>
 
-          {/* Google Signup Option (Only on Step 1) */}
-          {step === 1 && (
-            <>
-              <Button 
-                type="button"
-                onClick={handleGoogleSignup}
-                className="w-full h-11 rounded-xl font-semibold bg-white text-gray-700 border-2 border-gray-300 transition-all duration-200 hover:bg-gray-50 hover:border-gray-400"
-                disabled={isGoogleLoading}
-              >
-                {isGoogleLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Connecting...
-                  </>
-                ) : (
-                  <>
-                    <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
-                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
-                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-                    </svg>
-                    Continue with Google
-                  </>
-                )}
-              </Button>
-
-              <div className="relative">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-gray-300"></div>
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-white text-gray-500">Or fill in manually</span>
-                </div>
-              </div>
-            </>
-          )}
-
-          {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            {/* Step 1: Company Information */}
-            {step === 1 && (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Company Name */}
-                  <div className="md:col-span-2 space-y-2">
-                    <Label htmlFor="companyName" className="text-gray-700 font-medium flex items-center gap-2">
-                      <Building2 className="w-4 h-4" />
-                      Company Name *
-                    </Label>
-                    <Input
-                      id="companyName"
-                      placeholder="Enter company name"
-                      className="h-11 rounded-xl"
-                      {...register("companyName", { required: "Company name is required" })}
-                    />
-                    {errors.companyName && (
-                      <p className="text-sm text-red-600">{errors.companyName.message}</p>
-                    )}
-                  </div>
-
-                  {/* Email */}
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-700 font-medium flex items-center gap-2">
-                      <Mail className="w-4 h-4" />
-                      Email *
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="company@example.com"
-                      className="h-11 rounded-xl"
-                      {...register("email", { 
-                        required: "Email is required",
-                        pattern: {
-                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                          message: "Invalid email address"
-                        }
-                      })}
-                    />
-                    {errors.email && (
-                      <p className="text-sm text-red-600">{errors.email.message}</p>
-                    )}
-                  </div>
-
-                  {/* Phone */}
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-gray-700 font-medium flex items-center gap-2">
-                      <Phone className="w-4 h-4" />
-                      Phone Number *
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="+91 98765 43210"
-                      className="h-11 rounded-xl"
-                      {...register("phone", { required: "Phone number is required" })}
-                    />
-                    {errors.phone && (
-                      <p className="text-sm text-red-600">{errors.phone.message}</p>
-                    )}
-                  </div>
-
-                  {/* Contact Person */}
-                  <div className="space-y-2">
-                    <Label htmlFor="contactPerson" className="text-gray-700 font-medium flex items-center gap-2">
-                      <User className="w-4 h-4" />
-                      Contact Person *
-                    </Label>
-                    <Input
-                      id="contactPerson"
-                      placeholder="Full name"
-                      className="h-11 rounded-xl"
-                      {...register("contactPerson", { required: "Contact person is required" })}
-                    />
-                    {errors.contactPerson && (
-                      <p className="text-sm text-red-600">{errors.contactPerson.message}</p>
-                    )}
-                  </div>
-
-                  {/* Country */}
-                  <div className="space-y-2">
-                    <Label htmlFor="country" className="text-gray-700 font-medium flex items-center gap-2">
-                      <MapPin className="w-4 h-4" />
-                      Country *
-                    </Label>
-                    <Input
-                      id="country"
-                      placeholder="Country"
-                      className="h-11 rounded-xl"
-                      {...register("country", { required: "Country is required" })}
-                    />
-                    {errors.country && (
-                      <p className="text-sm text-red-600">{errors.country.message}</p>
-                    )}
-                  </div>
-
-                  {/* Address */}
-                  <div className="md:col-span-2 space-y-2">
-                    <Label htmlFor="address" className="text-gray-700 font-medium">
-                      Address *
-                    </Label>
-                    <Input
-                      id="address"
-                      placeholder="Complete address"
-                      className="h-11 rounded-xl"
-                      {...register("address", { required: "Address is required" })}
-                    />
-                    {errors.address && (
-                      <p className="text-sm text-red-600">{errors.address.message}</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Step 2: Business Details */}
-            {step === 2 && (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* GST Number */}
-                  <div className="space-y-2">
-                    <Label htmlFor="gstNumber" className="text-gray-700 font-medium">
-                      GST Number *
-                    </Label>
-                    <Input
-                      id="gstNumber"
-                      placeholder="22AAAAA0000A1Z5"
-                      className="h-11 rounded-xl uppercase"
-                      {...register("gstNumber", { 
-                        required: "GST number is required",
-                        pattern: {
-                          value: /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/,
-                          message: "Invalid GST number format"
-                        }
-                      })}
-                    />
-                    {errors.gstNumber && (
-                      <p className="text-sm text-red-600">{errors.gstNumber.message}</p>
-                    )}
-                  </div>
-
-                  {/* State */}
-                  <div className="space-y-2">
-                    <Label htmlFor="state" className="text-gray-700 font-medium">
-                      State *
-                    </Label>
-                    <Select onValueChange={(value) => setValue("state", value)}>
-                      <SelectTrigger className="h-11 rounded-xl">
-                        <SelectValue placeholder="Select state" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {INDIAN_STATES.map((state) => (
-                          <SelectItem key={state} value={state}>
-                            {state}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {errors.state && (
-                      <p className="text-sm text-red-600">{errors.state.message}</p>
-                    )}
-                  </div>
-
-                  {/* Pin Code */}
-                  <div className="space-y-2">
-                    <Label htmlFor="pinCode" className="text-gray-700 font-medium">
-                      Pin Code *
-                    </Label>
-                    <Input
-                      id="pinCode"
-                      placeholder="400001"
-                      maxLength={6}
-                      className="h-11 rounded-xl"
-                      {...register("pinCode", { 
-                        required: "Pin code is required",
-                        pattern: {
-                          value: /^[0-9]{6}$/,
-                          message: "Invalid pin code"
-                        }
-                      })}
-                    />
-                    {errors.pinCode && (
-                      <p className="text-sm text-red-600">{errors.pinCode.message}</p>
-                    )}
-                  </div>
-
-                  {/* Currency */}
-                  <div className="space-y-2">
-                    <Label htmlFor="currency" className="text-gray-700 font-medium">
-                      Currency *
-                    </Label>
-                    <Select defaultValue="INR" onValueChange={(value) => setValue("currency", value)}>
-                      <SelectTrigger className="h-11 rounded-xl">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {CURRENCIES.map((curr) => (
-                          <SelectItem key={curr.code} value={curr.code}>
-                            {curr.symbol} {curr.code} - {curr.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Nature of Business */}
-                  <div className="md:col-span-2 space-y-2">
-                    <Label htmlFor="natureOfBusiness" className="text-gray-700 font-medium">
-                      Nature of Business *
-                    </Label>
-                    <Select onValueChange={(value) => setValue("natureOfBusiness", value)}>
-                      <SelectTrigger className="h-11 rounded-xl">
-                        <SelectValue placeholder="Select business type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {NATURE_OF_BUSINESS.map((nature) => (
-                          <SelectItem key={nature} value={nature}>
-                            {nature}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {errors.natureOfBusiness && (
-                      <p className="text-sm text-red-600">{errors.natureOfBusiness.message}</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Step 3: Admin Account */}
-            {step === 3 && (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Admin Username */}
-                  <div className="md:col-span-2 space-y-2">
-                    <Label htmlFor="adminUser" className="text-gray-700 font-medium flex items-center gap-2">
-                      <User className="w-4 h-4" />
-                      Admin Username *
-                    </Label>
-                    <Input
-                      id="adminUser"
-                      placeholder="admin username"
-                      className="h-11 rounded-xl"
-                      {...register("adminUser", { required: "Admin username is required" })}
-                    />
-                    {errors.adminUser && (
-                      <p className="text-sm text-red-600">{errors.adminUser.message}</p>
-                    )}
-                  </div>
-
-                  {/* Password */}
-                  <div className="space-y-2">
-                    <Label htmlFor="password" className="text-gray-700 font-medium flex items-center gap-2">
-                      <Lock className="w-4 h-4" />
-                      Password *
-                    </Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="••••••••"
-                      className="h-11 rounded-xl"
-                      {...register("password", { 
-                        required: "Password is required",
-                        minLength: {
-                          value: 8,
-                          message: "Password must be at least 8 characters"
-                        }
-                      })}
-                    />
-                    {errors.password && (
-                      <p className="text-sm text-red-600">{errors.password.message}</p>
-                    )}
-                  </div>
-
-                  {/* Confirm Password */}
-                  <div className="space-y-2">
-                    <Label htmlFor="confirmPassword" className="text-gray-700 font-medium flex items-center gap-2">
-                      <Lock className="w-4 h-4" />
-                      Confirm Password *
-                    </Label>
-                    <Input
-                      id="confirmPassword"
-                      type="password"
-                      placeholder="••••••••"
-                      className="h-11 rounded-xl"
-                      {...register("confirmPassword", { 
-                        required: "Please confirm password",
-                        validate: (value) => value === password || "Passwords do not match"
-                      })}
-                    />
-                    {errors.confirmPassword && (
-                      <p className="text-sm text-red-600">{errors.confirmPassword.message}</p>
-                    )}
-                  </div>
-
-                  {/* Logo Upload */}
-                  <div className="md:col-span-2 space-y-2">
-                    <Label htmlFor="logo" className="text-gray-700 font-medium flex items-center gap-2">
-                      <Upload className="w-4 h-4" />
-                      Company Logo (Optional)
-                    </Label>
-                    <div className="flex items-center gap-4">
-                      {logoPreview && (
-                        <div className="w-20 h-20 rounded-xl border-2 border-gray-200 overflow-hidden">
-                          <img src={logoPreview} alt="Logo preview" className="w-full h-full object-cover" />
-                        </div>
-                      )}
-                      <Input
-                        id="logo"
-                        type="file"
-                        accept="image/*"
-                        className="h-11 rounded-xl"
-                        {...register("logo")}
-                        onChange={handleLogoChange}
-                      />
-                    </div>
-                    <p className="text-xs text-gray-500">Max size: 2MB. Formats: JPG, PNG, SVG</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Navigation Buttons */}
-            <div className="flex gap-3 pt-4">
-              {step > 1 && (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={prevStep}
-                  className="flex-1 h-11 rounded-xl border-gray-300"
-                >
-                  <ChevronLeft className="w-4 h-4 mr-2" />
-                  Previous
-                </Button>
-              )}
-              
-              {step < 3 ? (
-                <Button
-                  type="button"
-                  onClick={nextStep}
-                  className="flex-1 h-11 rounded-xl text-white"
-                  style={{ 
-                    background: "linear-gradient(135deg, var(--bay-coral), var(--bay-teal), var(--bay-violet))" 
-                  }}
-                >
-                  Next
-                  <ChevronRight className="w-4 h-4 ml-2" />
-                </Button>
+          {/* Signup Options */}
+          <div className="space-y-4">
+            {/* Google Signup */}
+            <Button 
+              type="button"
+              onClick={handleGoogleSignup}
+              className="w-full h-11 rounded-xl font-semibold bg-white text-gray-700 border-2 border-gray-300 transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 hover:scale-[1.02] disabled:hover:scale-100"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Connecting...
+                </>
               ) : (
-                <Button
-                  type="submit"
-                  className="flex-1 h-11 rounded-xl text-white"
-                  style={{ 
-                    background: "linear-gradient(135deg, var(--bay-coral), var(--bay-teal), var(--bay-violet))" 
-                  }}
-                >
-                  Create Account
-                </Button>
+                <>
+                  <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
+                    <path
+                      fill="#4285F4"
+                      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                    />
+                    <path
+                      fill="#EA4335"
+                      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    />
+                  </svg>
+                  Continue with Google
+                </>
               )}
-            </div>
-          </form>
+            </Button>
 
-          {/* Login Link */}
-          <div className="text-center">
-            <button
+            {/* Divider */}
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-4 bg-white text-gray-500">Or</span>
+              </div>
+            </div>
+
+            {/* Manual Signup */}
+            <Button
+              type="button"
+              onClick={handleManualSignup}
+              className="w-full h-11 rounded-xl font-semibold text-white border-0 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
+              style={{ 
+                background: `linear-gradient(135deg, var(--bay-coral), var(--bay-teal), var(--bay-violet))`,
+                boxShadow: "0 4px 12px rgba(77, 217, 172, 0.3)"
+              }}
+            >
+              <Mail className="mr-2 h-4 w-4" />
+              Sign up with Email
+            </Button>
+
+            {/* Divider */}
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-4 bg-white text-gray-500">Already have an account?</span>
+              </div>
+            </div>
+
+            {/* Login Link */}
+            <Button
               type="button"
               onClick={() => router.push("/login")}
-              className="text-sm transition-colors hover:underline"
-              style={{ color: "var(--bay-teal)" }}
+              variant="outline"
+              className="w-full h-11 rounded-xl font-semibold border-2 transition-all duration-200 hover:scale-[1.02]"
+              style={{ 
+                borderColor: "var(--bay-teal)",
+                color: "var(--bay-teal)"
+              }}
             >
-              Already have an account? Sign in
-            </button>
+              Sign in instead
+            </Button>
+
+            {/* Terms */}
+            <p className="text-center text-xs text-gray-500">
+              By continuing, you agree to BAY53&apos;s Terms of Service and Privacy Policy
+            </p>
           </div>
 
           {/* bayAI Teaser */}
           <div 
-            className="p-4 rounded-xl border transition-all duration-200"
+            className="p-4 rounded-xl border transition-all duration-200 hover:shadow-md"
             style={{ 
               background: "linear-gradient(135deg, rgba(240, 112, 80, 0.05), rgba(77, 217, 172, 0.05), rgba(123, 143, 245, 0.05))",
               borderColor: "rgba(77, 217, 172, 0.2)"
