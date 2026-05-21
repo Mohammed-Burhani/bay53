@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendDemoRequestEmail } from '@/lib/email';
 import { verifyRecaptcha } from '@/lib/recaptcha';
-import { createClient } from '@/supabase/server';
+import { createAdminClient } from '@/supabase/admin';
 
 export async function POST(request: NextRequest) {
   try {
@@ -37,8 +37,8 @@ export async function POST(request: NextRequest) {
 
     console.log('reCAPTCHA verified successfully, score:', recaptchaResult.score);
 
-    // Store demo request in Supabase
-    const supabase = await createClient();
+    // Store demo request in Supabase using admin client (bypasses RLS)
+    const supabase = createAdminClient();
     const { data: demoData, error: dbError } = await supabase
       .from('demo_requests')
       .insert({
