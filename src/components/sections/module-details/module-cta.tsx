@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Rocket, Users, TrendingUp } from 'lucide-react';
 
@@ -73,7 +74,7 @@ const ModuleCTA = ({
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-                <a href={productUrl} target="_blank" rel="noopener noreferrer">
+                <Link href="/signup">
                   <Button 
                     size="lg" 
                     className="bg-white text-[#0f172a] hover:bg-white/95 px-10 py-6 text-lg shadow-2xl hover:shadow-3xl font-semibold border-0 group w-full sm:w-auto"
@@ -81,7 +82,7 @@ const ModuleCTA = ({
                     Start Free Trial
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                </a>
+                </Link>
                 <Button 
                   size="lg" 
                   variant="outline"

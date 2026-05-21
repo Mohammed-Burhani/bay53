@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
@@ -15,10 +16,12 @@ export default function PricingCTA() {
             Join thousands of businesses that trust us to power their operations
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="w-full sm:w-auto bg-white text-[#60a5fa] hover:bg-white/90 shadow-xl">
-              Start your free trial
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link href="/signup">
+              <Button size="lg" className="w-full sm:w-auto bg-white text-[#60a5fa] hover:bg-white/90 shadow-xl">
+                Start your free trial
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
             <Button size="lg" variant="outline" className="w-full sm:w-auto border-none text-white hover:scale-110 bg-linear-to-r from-primary to-brand-cyan">
               Schedule a demo
             </Button>

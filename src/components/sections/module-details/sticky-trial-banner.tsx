@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { X, Sparkles, ArrowRight } from 'lucide-react';
 
@@ -61,7 +62,7 @@ const StickyTrialBanner = ({
 
             {/* Right side - CTA */}
             <div className="flex items-center gap-3">
-              <a href={productUrl} target="_blank" rel="noopener noreferrer">
+              <Link href="/signup">
                 <Button 
                   size="sm"
                   className="bg-white text-[#0f172a] hover:bg-white/95 font-semibold shadow-lg group"
@@ -69,7 +70,7 @@ const StickyTrialBanner = ({
                   Start Free Trial
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </a>
+              </Link>
               <button
                 onClick={handleDismiss}
                 className="p-2 rounded-full hover:bg-white/20 transition-colors"

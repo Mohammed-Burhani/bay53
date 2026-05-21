@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 
@@ -59,7 +60,7 @@ const ModuleHero = ({
           
           {/* CTA Buttons with Trial Focus */}
           <div className="flex flex-wrap gap-4">
-            <a href={productUrl} target="_blank" rel="noopener noreferrer">
+            <Link href="/signup">
               <Button 
                 size="lg" 
                 className="px-8 py-6 text-lg shadow-xl bg-gradient-to-r from-[#60a5fa] to-[#10b981] hover:from-[#60a5fa]/90 hover:to-[#10b981]/90 border-0 font-semibold group"
@@ -67,7 +68,7 @@ const ModuleHero = ({
                 Start Free {trialDuration} Trial
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </a>
+            </Link>
             <Button 
               size="lg" 
               variant="outline"

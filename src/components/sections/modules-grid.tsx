@@ -91,30 +91,14 @@ const ModulesGrid = async () => {
 
                 {/* CTAs */}
                 <div className="flex flex-col gap-3">
-                  {module.productUrl ? (
-                    <a 
-                      href={module.productUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="w-full"
+                  <Link href="/signup" className="w-full">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-[#60a5fa] to-[#10b981] hover:from-[#60a5fa]/90 hover:to-[#10b981]/90 text-white font-semibold group/btn"
                     >
-                      <Button 
-                        className="w-full bg-gradient-to-r from-[#60a5fa] to-[#10b981] hover:from-[#60a5fa]/90 hover:to-[#10b981]/90 text-white font-semibold group/btn"
-                      >
-                        Start Free Trial
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
-                    </a>
-                  ) : (
-                    <Link href={`/modules/${module.slug}`} className="w-full">
-                      <Button 
-                        className="w-full bg-gradient-to-r from-[#60a5fa] to-[#10b981] hover:from-[#60a5fa]/90 hover:to-[#10b981]/90 text-white font-semibold group/btn"
-                      >
-                        Start Free Trial
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
-                  )}
+                      Start Free Trial
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
                   
                   <Link href={`/modules/${module.slug}`}>
                     <Button 

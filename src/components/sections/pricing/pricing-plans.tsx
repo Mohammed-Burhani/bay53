@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -133,17 +134,47 @@ export default function PricingPlans() {
                 </CardContent>
 
                 <CardFooter className="flex flex-col gap-3">
-                  <Button 
-                    className="w-full shadow-lg hover:shadow-xl" 
-                    size="lg" 
-                    variant={tier.popular ? 'default' : 'outline'}
-                    style={tier.popular ? {
-                      background: 'linear-gradient(to right, #60a5fa, #10b981)',
-                      border: 'none'
-                    } : {}}
-                  >
-                    {tier.cta.primary}
-                  </Button>
+                  {tier.id === 'pro' ? (
+                    <Link href="/signup" className="w-full">
+                      <Button 
+                        className="w-full shadow-lg hover:shadow-xl" 
+                        size="lg" 
+                        variant={tier.popular ? 'default' : 'outline'}
+                        style={tier.popular ? {
+                          background: 'linear-gradient(to right, #60a5fa, #10b981)',
+                          border: 'none'
+                        } : {}}
+                      >
+                        {tier.cta.primary}
+                      </Button>
+                    </Link>
+                  ) : tier.id === 'free' ? (
+                    <Link href="/signup" className="w-full">
+                      <Button 
+                        className="w-full shadow-lg hover:shadow-xl" 
+                        size="lg" 
+                        variant={tier.popular ? 'default' : 'outline'}
+                        style={tier.popular ? {
+                          background: 'linear-gradient(to right, #60a5fa, #10b981)',
+                          border: 'none'
+                        } : {}}
+                      >
+                        {tier.cta.primary}
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button 
+                      className="w-full shadow-lg hover:shadow-xl" 
+                      size="lg" 
+                      variant={tier.popular ? 'default' : 'outline'}
+                      style={tier.popular ? {
+                        background: 'linear-gradient(to right, #60a5fa, #10b981)',
+                        border: 'none'
+                      } : {}}
+                    >
+                      {tier.cta.primary}
+                    </Button>
+                  )}
                   <Button variant="ghost" className="w-full text-[#60a5fa] hover:text-[#60a5fa] hover:bg-[#60a5fa]/10" size="lg">
                     {tier.cta.secondary}
                   </Button>
