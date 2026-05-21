@@ -35,10 +35,12 @@ export default function PricingPlans() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3 md:grid-cols-2">
           {pricingTiers.map((tier) => {
             const price = billingPeriod === 'monthly' ? tier.monthlyPrice : tier.yearlyPrice;
             const employeePrice = billingPeriod === 'monthly' ? tier.monthlyPrice.employee : tier.yearlyPrice.employee;
+            const isEnterprise = tier.id === 'enterprise';
+            const isFree = tier.id === 'free';
 
             return (
               <Card
@@ -62,41 +64,68 @@ export default function PricingPlans() {
 
                 <CardContent className="flex-1">
                   {/* Pricing */}
-                  <div className="mb-6 space-y-4">
-                    <div>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-4xl font-bold text-[#0f172a]">₹{price.user}</span>
-                        <span className="text-[#64748b]">
-                          per user/month
-                        </span>
+                  {isEnterprise ? (
+                    <div className="mb-6 space-y-4">
+                      <div>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-4xl font-bold text-[#0f172a]">Custom</span>
+                        </div>
+                        <p className="mt-1 text-sm text-[#64748b]">
+                          Tailored pricing based on your requirements
+                        </p>
                       </div>
-                      <p className="mt-1 text-sm text-[#64748b]">
-                        billed {billingPeriod}
+                    </div>
+                  ) : isFree ? (
+                    <div className="mb-6 space-y-4">
+                      <div>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-4xl font-bold text-[#0f172a]">₹0</span>
+                          <span className="text-[#64748b]">
+                            forever
+                          </span>
+                        </div>
+                        <p className="mt-1 text-sm text-[#64748b]">
+                          Up to 3 users included
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mb-6 space-y-4">
+                      <div>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-4xl font-bold text-[#0f172a]">₹{price.user}</span>
+                          <span className="text-[#64748b]">
+                            per user/month
+                          </span>
+                        </div>
+                        <p className="mt-1 text-sm text-[#64748b]">
+                          billed {billingPeriod}
+                        </p>
+                      </div>
+
+                      <div className="border-t border-[#e2e8f0] pt-4">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-2xl font-bold text-[#0f172a]">₹{employeePrice}</span>
+                          <span className="text-[#64748b]">
+                            per employee/month
+                          </span>
+                        </div>
+                        <p className="mt-1 text-sm text-[#64748b]">
+                          billed {billingPeriod}
+                        </p>
+                      </div>
+
+                      <p className="text-sm text-[#64748b]">
+                        Minimum users: {tier.minUsers}
                       </p>
                     </div>
-
-                    <div className="border-t border-[#e2e8f0] pt-4">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-2xl font-bold text-[#0f172a]">₹{employeePrice}</span>
-                        <span className="text-[#64748b]">
-                          per employee/month
-                        </span>
-                      </div>
-                      <p className="mt-1 text-sm text-[#64748b]">
-                        billed {billingPeriod}
-                      </p>
-                    </div>
-
-                    <p className="text-sm text-[#64748b]">
-                      Minimum users: {tier.minUsers}
-                    </p>
-                  </div>
+                  )}
 
                   {/* Features */}
                   <div className="space-y-3">
                     {tier.features.map((feature) => (
                       <div key={feature} className="flex items-start gap-3">
-                        <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#10b981]" />
+                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#10b981]" />
                         <span className="text-sm text-[#475569]">{feature}</span>
                       </div>
                     ))}
@@ -113,10 +142,10 @@ export default function PricingPlans() {
                       border: 'none'
                     } : {}}
                   >
-                    Start your free trial
+                    {tier.cta.primary}
                   </Button>
                   <Button variant="ghost" className="w-full text-[#60a5fa] hover:text-[#60a5fa] hover:bg-[#60a5fa]/10" size="lg">
-                    Request a demo
+                    {tier.cta.secondary}
                   </Button>
                 </CardFooter>
               </Card>
@@ -127,7 +156,7 @@ export default function PricingPlans() {
         {/* Additional Info */}
         <div className="mt-12 text-center">
           <p className="text-sm text-[#64748b]">
-            All plans include 14-day free trial. No credit card required.
+            Start with our Free plan or try Pro with a 14-day free trial. No credit card required.
           </p>
         </div>
       </div>

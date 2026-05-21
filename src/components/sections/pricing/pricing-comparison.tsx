@@ -66,15 +66,18 @@ export default function PricingComparison() {
           {/* Feature Comparison Table */}
           <Card className="border-2 border-[#e2e8f0]">
             <CardHeader className="bg-[#f8fafc]">
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-4 gap-4">
                 <div className="col-span-1">
                   <CardTitle className="text-lg text-[#0f172a]">Features</CardTitle>
                 </div>
                 <div className="text-center">
-                  <CardTitle className="text-lg text-[#0f172a]">Standard</CardTitle>
+                  <CardTitle className="text-lg text-[#0f172a]">Free</CardTitle>
                 </div>
                 <div className="text-center">
-                  <CardTitle className="text-lg text-[#0f172a]">Premium</CardTitle>
+                  <CardTitle className="text-lg text-[#0f172a]">Pro</CardTitle>
+                </div>
+                <div className="text-center">
+                  <CardTitle className="text-lg text-[#0f172a]">Enterprise</CardTitle>
                 </div>
               </div>
             </CardHeader>
@@ -90,16 +93,19 @@ export default function PricingComparison() {
                         {category.features.map((feature, featureIndex) => (
                           <div
                             key={featureIndex}
-                            className="grid grid-cols-3 gap-4 border-b border-[#f1f5f9] py-3 last:border-b-0"
+                            className="grid grid-cols-4 gap-4 border-b border-[#f1f5f9] py-3 last:border-b-0"
                           >
                             <div className="col-span-1 text-sm text-[#475569]">
                               {feature.name}
                             </div>
                             <div className="flex justify-center">
-                              {renderFeatureValue(feature.standard)}
+                              {renderFeatureValue(feature.free)}
                             </div>
                             <div className="flex justify-center">
-                              {renderFeatureValue(feature.premium)}
+                              {renderFeatureValue(feature.pro)}
+                            </div>
+                            <div className="flex justify-center">
+                              {renderFeatureValue(feature.enterprise)}
                             </div>
                           </div>
                         ))}

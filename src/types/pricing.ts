@@ -24,8 +24,9 @@ export interface PricingTier {
 
 export interface Feature {
   name: string;
-  standard: boolean | string;
-  premium: boolean | string;
+  free: boolean | string;
+  pro: boolean | string;
+  enterprise: boolean | string;
 }
 
 export interface FeatureCategory {
