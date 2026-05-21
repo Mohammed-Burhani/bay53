@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendContactEmail } from '@/lib/email';
 import { verifyRecaptcha } from '@/lib/recaptcha';
+import { createClient } from '@/supabase/server';
 
 export async function POST(request: NextRequest) {
   try {
@@ -36,12 +37,36 @@ export async function POST(request: NextRequest) {
 
     console.log('reCAPTCHA verified successfully, score:', recaptchaResult.score);
 
+    // Store enquiry in Supabase
+    const supabase = await createClient();
+    const { data: enquiryData, error: dbError } = await supabase
+      .from('contact_enquiries')
+      .insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        subject: data.subject,
+        message: data.message,
+        recaptcha_score: recaptchaResult.score || null,
+        status: 'new',
+      })
+      .select()
+      .single();
+
+    if (dbError) {
+      console.error('Error storing enquiry in database:', dbError);
+      // Continue with email sending even if database insert fails
+    } else {
+      console.log('Enquiry stored in database with ID:', enquiryData?.id);
+    }
+
+    // Send email notification
     const result = await sendContactEmail(data);
     console.log('Email send result:', result);
 
     if (result.success) {
       return NextResponse.json(
-        { success: true, message: 'Email sent successfully' },
+        { success: true, message: 'Email sent successfully', enquiryId: enquiryData?.id },
         { status: 200 }
       );
     } else {

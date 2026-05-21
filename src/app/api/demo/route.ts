@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendDemoRequestEmail } from '@/lib/email';
 import { verifyRecaptcha } from '@/lib/recaptcha';
+import { createClient } from '@/supabase/server';
 
 export async function POST(request: NextRequest) {
   try {
@@ -36,12 +37,37 @@ export async function POST(request: NextRequest) {
 
     console.log('reCAPTCHA verified successfully, score:', recaptchaResult.score);
 
+    // Store demo request in Supabase
+    const supabase = await createClient();
+    const { data: demoData, error: dbError } = await supabase
+      .from('demo_requests')
+      .insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        company: data.company,
+        employees: data.employees || null,
+        message: data.message || null,
+        recaptcha_score: recaptchaResult.score || null,
+        status: 'new',
+      })
+      .select()
+      .single();
+
+    if (dbError) {
+      console.error('Error storing demo request in database:', dbError);
+      // Continue with email sending even if database insert fails
+    } else {
+      console.log('Demo request stored in database with ID:', demoData?.id);
+    }
+
+    // Send email notification
     const result = await sendDemoRequestEmail(data);
     console.log('Email send result:', result);
 
     if (result.success) {
       return NextResponse.json(
-        { success: true, message: 'Demo request sent successfully' },
+        { success: true, message: 'Demo request sent successfully', requestId: demoData?.id },
         { status: 200 }
       );
     } else {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "@/lib/hooks/useAuth";
 import LoginForm from "@/components/auth/LoginForm";
@@ -19,5 +19,9 @@ export default function LoginPage() {
   // Don't render login form if already authenticated
   if (session) return null;
 
-  return <LoginForm />;
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
+  );
 }
