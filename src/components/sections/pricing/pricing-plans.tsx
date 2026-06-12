@@ -36,12 +36,11 @@ export default function PricingPlans() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 md:grid-cols-2">
           {pricingTiers.map((tier) => {
             const price = billingPeriod === 'monthly' ? tier.monthlyPrice : tier.yearlyPrice;
             const employeePrice = billingPeriod === 'monthly' ? tier.monthlyPrice.employee : tier.yearlyPrice.employee;
             const isEnterprise = tier.id === 'enterprise';
-            const isFree = tier.id === 'free';
 
             return (
               <Card
@@ -73,20 +72,6 @@ export default function PricingPlans() {
                         </div>
                         <p className="mt-1 text-sm text-[#64748b]">
                           Tailored pricing based on your requirements
-                        </p>
-                      </div>
-                    </div>
-                  ) : isFree ? (
-                    <div className="mb-6 space-y-4">
-                      <div>
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-4xl font-bold text-[#0f172a]">₹0</span>
-                          <span className="text-[#64748b]">
-                            forever
-                          </span>
-                        </div>
-                        <p className="mt-1 text-sm text-[#64748b]">
-                          Up to 3 users included
                         </p>
                       </div>
                     </div>
@@ -134,21 +119,7 @@ export default function PricingPlans() {
                 </CardContent>
 
                 <CardFooter className="flex flex-col gap-3">
-                  {tier.id === 'pro' ? (
-                    <Link href="/signup" className="w-full">
-                      <Button 
-                        className="w-full shadow-lg hover:shadow-xl" 
-                        size="lg" 
-                        variant={tier.popular ? 'default' : 'outline'}
-                        style={tier.popular ? {
-                          background: 'linear-gradient(to right, #60a5fa, #10b981)',
-                          border: 'none'
-                        } : {}}
-                      >
-                        {tier.cta.primary}
-                      </Button>
-                    </Link>
-                  ) : tier.id === 'free' ? (
+                  {tier.id === 'standard' ? (
                     <Link href="/signup" className="w-full">
                       <Button 
                         className="w-full shadow-lg hover:shadow-xl" 
@@ -187,7 +158,7 @@ export default function PricingPlans() {
         {/* Additional Info */}
         <div className="mt-12 text-center">
           <p className="text-sm text-[#64748b]">
-            Start with our Free plan or try Pro with a 14-day free trial. No credit card required.
+            Try Standard with a 14-day free trial. No credit card required.
           </p>
         </div>
       </div>
